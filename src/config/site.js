@@ -14,8 +14,8 @@ const formatPhone = (n) => {
 
 export const SITE = {
   name: 'Sumber Rejeki Tech',
-  url: (env.VITE_SITE_URL || 'https://sumberrejekitech.com').replace(/\/$/, ''),
-  email: env.VITE_CONTACT_EMAIL || 'info@sumberrejekitech.com',
+  url: (env.VITE_SITE_URL || 'https://sumberrejekitech.web.id').replace(/\/$/, ''),
+  email: env.VITE_CONTACT_EMAIL || 'sumberrejekitechofficial@gmail.com',
   whatsapp: waNumber,
   phoneDisplay: formatPhone(waNumber),
   web3formsKey: env.VITE_WEB3FORMS_ACCESS_KEY || '',
