@@ -1,8 +1,9 @@
-// Semua data kontak & kredensial dibaca dari environment (.env) agar tidak hardcoded.
-// Lihat .env.example untuk daftar variabel.
+// Data kontak dibaca dari environment (.env / Build variables Cloudflare).
+// Nilai setelah "||" adalah cadangan jika variabel tidak terisi.
+// Semua nilai ini bersifat publik (tampil di situs / access key Web3Forms bersifat public).
 const env = import.meta.env;
 
-const waNumber = (env.VITE_WHATSAPP_NUMBER || '6281234567890').replace(/\D/g, '');
+const waNumber = (env.VITE_WHATSAPP_NUMBER || '6281563223539').replace(/\D/g, '');
 
 const formatPhone = (n) => {
   if (n.startsWith('62')) {
@@ -18,7 +19,7 @@ export const SITE = {
   email: env.VITE_CONTACT_EMAIL || 'sumberrejekitechofficial@gmail.com',
   whatsapp: waNumber,
   phoneDisplay: formatPhone(waNumber),
-  web3formsKey: env.VITE_WEB3FORMS_ACCESS_KEY || '',
+  web3formsKey: env.VITE_WEB3FORMS_ACCESS_KEY || '075f43e9-6012-4356-b0fb-f67adb6609b9',
 };
 
 export const formServiceConfigured = Boolean(SITE.web3formsKey);
