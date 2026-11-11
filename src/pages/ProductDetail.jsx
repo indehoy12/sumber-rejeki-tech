@@ -3,6 +3,7 @@ import Seo from '../components/Seo';
 import { productsData } from '../data/products';
 import { useLanguage } from '../hooks/useLanguage';
 import { waLink } from '../config/site';
+import { seoBySlug } from '../data/seo';
 
 const ProductDetail = () => {
   const { slug } = useParams();
@@ -26,10 +27,16 @@ const ProductDetail = () => {
   const available = product.status === 'Available';
   const related = productsData.filter((p) => p.category === product.category && p.slug !== product.slug).slice(0, 3);
   const message = t.productDetail.waMessage.replace('{product}', title);
+  const seo = seoBySlug[product.slug];
+  const isId = lang === 'id';
 
   return (
     <div className="py-10 sm:py-14 lg:py-16 bg-white">
-      <Seo title={title} description={desc} />
+      <Seo
+        title={isId ? seo.title : title}
+        description={isId ? seo.desc : desc}
+        keywords={isId ? seo.keywords : undefined}
+      />
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav aria-label="Breadcrumb" className="text-sm text-brand-muted mb-6 sm:mb-8 flex flex-wrap items-center gap-x-2 gap-y-1">
           <Link to="/" className="hover:text-brand-navy">{t.productDetail.home}</Link><span aria-hidden="true">/</span>
@@ -57,6 +64,23 @@ const ProductDetail = () => {
 
             <h2 className="text-xl font-semibold text-brand-navy mb-3">{t.productDetail.useCases}</h2>
             <p className="text-brand-muted leading-relaxed">{useCases}</p>
+
+            {isId && (
+              <>
+                <h2 className="text-xl font-semibold text-brand-navy mt-10 mb-3">Tentang {title}</h2>
+                <p className="text-brand-muted leading-relaxed">{seo.intro}</p>
+
+                <h2 className="text-xl font-semibold text-brand-navy mt-10 mb-4">Pertanyaan yang sering diajukan</h2>
+                <div className="space-y-3">
+                  {seo.faq.map(([q, a]) => (
+                    <details key={q} className="group rounded-lg border border-brand-border bg-white p-4">
+                      <summary className="cursor-pointer font-medium text-brand-navy">{q}</summary>
+                      <p className="mt-2 text-brand-muted leading-relaxed">{a}</p>
+                    </details>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
 
           <aside className="bg-brand-soft p-6 lg:p-8 rounded-lg border border-brand-border h-fit md:sticky md:top-24">

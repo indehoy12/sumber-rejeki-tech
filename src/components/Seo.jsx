@@ -3,10 +3,10 @@ import { SITE } from '../config/site';
 import { useLanguage } from '../hooks/useLanguage';
 
 // React 19 otomatis memindahkan <title>, <meta>, <link> ke <head>.
-const Seo = ({ title, description, noindex = false }) => {
+const Seo = ({ title, description, keywords, jsonLd, fullTitleOverride, noindex = false }) => {
   const { pathname } = useLocation();
   const { lang, t } = useLanguage();
-  const fullTitle = title ? `${title} | ${SITE.name}` : t.seo.defaultTitle;
+  const fullTitle = fullTitleOverride || (title ? `${title} | ${SITE.name}` : t.seo.defaultTitle);
   const desc = description || t.seo.defaultDesc;
   const url = `${SITE.url}${pathname === '/' ? '' : pathname}`;
   const image = `${SITE.url}/og-image.png`;
@@ -15,6 +15,7 @@ const Seo = ({ title, description, noindex = false }) => {
     <>
       <title>{fullTitle}</title>
       <meta name="description" content={desc} />
+      {keywords && keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
       <link rel="canonical" href={url} />
       {noindex && <meta name="robots" content="noindex" />}
       <meta property="og:type" content="website" />
@@ -23,11 +24,13 @@ const Seo = ({ title, description, noindex = false }) => {
       <meta property="og:description" content={desc} />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={image} />
+      <meta property="og:image:alt" content={fullTitle} />
       <meta property="og:locale" content={lang === 'id' ? 'id_ID' : 'en_US'} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={desc} />
       <meta name="twitter:image" content={image} />
+      {jsonLd && <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>}
     </>
   );
 };
