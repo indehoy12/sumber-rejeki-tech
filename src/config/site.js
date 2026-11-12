@@ -3,7 +3,7 @@
 // Semua nilai ini bersifat publik (tampil di situs / access key Web3Forms bersifat public).
 const env = import.meta.env;
 
-const waNumber = (env.VITE_WHATSAPP_NUMBER || '6281563223539').replace(/\D/g, '');
+const waNumber = (env.VITE_WHATSAPP_NUMBER || '6285931418013').replace(/\D/g, '');
 
 const formatPhone = (n) => {
   if (n.startsWith('62')) {
