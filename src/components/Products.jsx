@@ -4,9 +4,10 @@ import Reveal from './Reveal';
 import Skeleton from './Skeleton';
 import { useLanguage } from '../hooks/useLanguage';
 import { productsData } from '../data/products';
+import StatusBadge from './StatusBadge';
 
 // Sistem unggulan: campuran dari setiap kategori
-const FEATURED = ['event-registration', 'qr-checkin', 'e-badge', 'lucky-draw', 'event-dashboard', 'e-certificate'];
+const FEATURED = ['event-registration', 'ticketing-system', 'invitation-rsvp', 'e-certificate', 'event-game', 'event-photobooth'];
 
 const Products = () => {
   const { t, lang } = useLanguage();
@@ -55,13 +56,9 @@ const Products = () => {
               <Link to={`/products/${prod.slug}`} className="bg-white p-6 lg:p-8 rounded-lg border border-brand-border flex flex-col h-full hover:shadow-md transition-shadow group">
                 <div className="flex justify-between items-start gap-3 mb-4">
                   <h3 className="text-lg font-semibold text-brand-navy group-hover:text-brand-orange transition-colors">{prod.title[lang]}</h3>
-                  <span className={`shrink-0 text-xs font-semibold px-2.5 py-1 rounded-full ${
-                    prod.status === 'Available' ? 'bg-green-50 text-green-700' : 'bg-brand-soft text-brand-muted'
-                  }`}>
-                    {prod.status === 'Available' ? t.products.statusAvailable : t.products.statusComingSoon}
-                  </span>
+                  <StatusBadge status={prod.status} />
                 </div>
-                <p className="text-sm text-brand-muted leading-relaxed mb-6 flex-grow">{prod.desc[lang]}</p>
+                <p className="text-sm text-brand-muted leading-relaxed mb-6 flex-grow">{prod.short[lang]}</p>
                 <span className="text-sm font-medium text-brand-navy group-hover:text-brand-orange transition-colors">
                   {t.products.viewDetails} <span aria-hidden="true">→</span>
                 </span>

@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
 import PageHeader from '../components/PageHeader';
-import { productsData } from '../data/products';
+import StatusBadge from '../components/StatusBadge';
+import { productsData, CATEGORIES, getHighlights } from '../data/products';
+import { waLink } from '../config/site';
 import { useLanguage } from '../hooks/useLanguage';
 
-const categories = ['All', 'Registration & Attendance', 'Event Experience', 'Event Operations', 'Reporting & Business'];
+const categories = ['All', ...CATEGORIES];
 
 const ProductsPage = () => {
   const { t, lang } = useLanguage();
@@ -14,7 +16,7 @@ const ProductsPage = () => {
 
   const q = searchTerm.trim().toLowerCase();
   const filteredProducts = productsData.filter((product) => {
-    const matchSearch = !q || product.title[lang].toLowerCase().includes(q) || product.desc[lang].toLowerCase().includes(q);
+    const matchSearch = !q || product.title[lang].toLowerCase().includes(q) || product.short[lang].toLowerCase().includes(q) || product.desc[lang].toLowerCase().includes(q);
     const matchCategory = filterCategory === 'All' || product.category === filterCategory;
     return matchSearch && matchCategory;
   });
@@ -60,19 +62,33 @@ const ProductsPage = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProducts.map((prod) => (
-            <Link key={prod.slug} to={`/products/${prod.slug}`} className="bg-white p-6 rounded-lg border border-brand-border hover:shadow-lg transition-shadow group flex flex-col h-full">
+            <article key={prod.slug} className="bg-white p-6 rounded-lg border border-brand-border hover:shadow-lg transition-shadow flex flex-col h-full">
               <div className="flex justify-between items-start gap-3 mb-2">
-                <h2 className="text-lg font-semibold text-brand-navy group-hover:text-brand-orange transition-colors">{prod.title[lang]}</h2>
-                <span className={`shrink-0 text-xs font-semibold px-2.5 py-1 rounded-full ${
-                  prod.status === 'Available' ? 'bg-green-50 text-green-700' : 'bg-brand-soft text-brand-muted'
-                }`}>
-                  {prod.status === 'Available' ? t.productsPage.available : t.productsPage.comingSoon}
-                </span>
+                <h2 className="text-lg font-semibold text-brand-navy">
+                  <Link to={`/products/${prod.slug}`} className="hover:text-brand-orange transition-colors">{prod.title[lang]}</Link>
+                </h2>
+                <StatusBadge status={prod.status} />
               </div>
-              <p className="text-xs text-brand-muted mb-4">{t.categories[prod.category]}</p>
-              <p className="text-sm text-brand-muted mb-6 flex-grow">{prod.desc[lang]}</p>
-              <span className="text-sm font-medium text-brand-orange">{t.products.viewDetails} <span aria-hidden="true">→</span></span>
-            </Link>
+              <p className="text-xs font-medium text-brand-orange mb-3">{t.categories[prod.category]}</p>
+              <p className="text-sm text-brand-muted mb-4">{prod.short[lang]}</p>
+              <ul className="flex flex-wrap gap-2 mb-6 flex-grow content-start" aria-label={t.productsPage.highlights}>
+                {getHighlights(prod).map((h) => (
+                  <li key={h} className="text-xs text-brand-navy bg-brand-soft border border-brand-border rounded-full px-2.5 py-1">{h}</li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap gap-3 items-center">
+                <Link to={`/products/${prod.slug}`} className="text-sm font-medium text-brand-navy border border-brand-border rounded-md px-4 py-2 hover:border-brand-navy transition-colors">
+                  {t.productsPage.btnDetail} <span aria-hidden="true">→</span>
+                </Link>
+                <a
+                  href={waLink(t.productDetail.waMessage.replace('{product}', prod.title[lang]))}
+                  target="_blank" rel="noopener noreferrer"
+                  className="text-sm font-semibold text-brand-navy bg-brand-orange rounded-md px-4 py-2 hover:bg-orange-400 transition-colors"
+                >
+                  {t.productsPage.btnWA}
+                </a>
+              </div>
+            </article>
           ))}
         </div>
         {filteredProducts.length === 0 && (

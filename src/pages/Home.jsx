@@ -9,7 +9,7 @@ import PopularSearches from '../components/PopularSearches';
 
 const Home = () => (
   <>
-    <Seo />
+    <Seo keywords={['sumber rejeki tech', 'sumber rejeki', 'event organizer pekalongan', 'eo pekalongan', 'software event organizer', 'sistem registrasi event', 'aplikasi QR check-in']} />
     <Hero />
     <Introduction />
     <Solutions />

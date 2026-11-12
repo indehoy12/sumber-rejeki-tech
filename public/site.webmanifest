@@ -1,0 +1,13 @@
+{
+  "name": "Sumber Rejeki Tech",
+  "short_name": "Sumber Rejeki",
+  "lang": "id",
+  "start_url": "/",
+  "display": "browser",
+  "theme_color": "#102a56",
+  "background_color": "#ffffff",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

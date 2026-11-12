@@ -1,3 +1,5 @@
+import { SOCIAL } from '../config/social.js';
+
 // Pembangun data terstruktur (JSON-LD). Dipakai di React (Seo.jsx) dan scripts/prerender.mjs.
 export const ORG_ID = (siteUrl) => `${siteUrl}/#organization`;
 
@@ -6,11 +8,25 @@ export const buildOrganizationJsonLd = (siteUrl, { email, phone } = {}) => ({
   '@type': 'Organization',
   '@id': ORG_ID(siteUrl),
   name: 'Sumber Rejeki Tech',
+  alternateName: ['Sumber Rejeki', 'Sumber Rejeki Tech Indonesia'],
   url: siteUrl,
-  logo: `${siteUrl}/apple-touch-icon.png`,
+  logo: `${siteUrl}/icon-512.png`,
+  image: `${siteUrl}/og-image.png`,
   email,
   ...(phone ? { telephone: phone } : {}),
-  areaServed: { '@type': 'Country', name: 'Indonesia' },
+  sameAs: Object.values(SOCIAL),
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer service',
+    email,
+    ...(phone ? { telephone: phone } : {}),
+    availableLanguage: ['id', 'en'],
+  },
+  areaServed: [
+    { '@type': 'Country', name: 'Indonesia' },
+    { '@type': 'City', name: 'Pekalongan' },
+    { '@type': 'AdministrativeArea', name: 'Jawa Tengah' },
+  ],
   description:
     'Penyedia solusi teknologi event di Indonesia: registrasi event, QR check-in, tiket, undangan digital RSVP, e-sertifikat, buku tamu digital, lucky draw, dan software event organizer.',
 });
@@ -19,6 +35,7 @@ export const buildWebSiteJsonLd = (siteUrl) => ({
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'Sumber Rejeki Tech',
+  alternateName: ['Sumber Rejeki', 'Sumber Rejeki Tech Indonesia'],
   url: siteUrl,
   inLanguage: 'id-ID',
   publisher: { '@id': ORG_ID(siteUrl) },
@@ -65,3 +82,16 @@ export const buildProductJsonLd = (product, seo, siteUrl) => {
     },
   ];
 };
+
+export const buildItemListJsonLd = (siteUrl, items) => ({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Katalog Produk Sumber Rejeki Tech',
+  numberOfItems: items.length,
+  itemListElement: items.map(([name, path], i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name,
+    url: `${siteUrl}${path}`,
+  })),
+});

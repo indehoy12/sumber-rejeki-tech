@@ -31,9 +31,19 @@ const PopularSearches = () => {
               <h3 className="font-semibold text-brand-navy group-hover:text-brand-orange transition-colors mb-1">
                 {seoBySlug[p.slug].title}
               </h3>
-              <p className="text-sm text-brand-muted">{p.desc.id}</p>
+              <p className="text-sm text-brand-muted">{p.short.id}</p>
             </Link>
           ))}
+        </div>
+        <div className="mt-12 max-w-3xl mx-auto text-center">
+          <h2 className="text-xl sm:text-2xl font-bold text-brand-navy mb-3 text-balance">
+            Teknologi Event untuk EO & Wedding Organizer di Pekalongan
+          </h2>
+          <p className="text-brand-muted leading-relaxed">
+            Sumber Rejeki Tech melayani event organizer (EO) Pekalongan, wedding organizer, sekolah, kampus, dan
+            perusahaan di Pekalongan, Jawa Tengah, serta seluruh Indonesia. Kelola registrasi, QR check-in, tiket,
+            undangan digital, hingga e-sertifikat dalam satu sistem.
+          </p>
         </div>
       </div>
     </section>

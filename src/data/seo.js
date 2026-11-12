@@ -1,135 +1,200 @@
 // Konten SEO per produk (Bahasa Indonesia).
 // Dipakai oleh: halaman detail produk (tampilan) dan scripts/prerender.mjs (HTML statis untuk Google).
-// Hanya klaim yang sesuai fitur di products.js. Jangan menambah klaim harga/rating yang belum ada.
+// Jangan menambah klaim harga/rating/fitur yang belum ada di products.js.
 import { productsData } from './products.js';
+
+export const STATUS_LABEL_ID = {
+  InDevelopment: 'Dalam Pengembangan',
+  ComingSoon: 'Coming Soon',
+  Available: 'Tersedia',
+};
 
 export const seoData = {
   'event-registration': {
-    title: 'Sistem Registrasi Event Online & Pendaftaran Peserta',
-    desc: 'Sistem registrasi event online untuk seminar, workshop, dan konferensi: formulir pendaftaran, kuota peserta, kategori, nomor registrasi otomatis, export Excel.',
-    keywords: ['sistem registrasi event', 'aplikasi pendaftaran peserta', 'registrasi event online', 'software registrasi seminar', 'form pendaftaran event'],
+    title: 'Sistem Registrasi Event & Aplikasi QR Check-in',
+    desc: 'Sistem registrasi event online dan aplikasi QR check-in: formulir pendaftaran, tiket digital QR Code, validasi tiket ganda, dashboard kehadiran, laporan PDF & Excel.',
+    keywords: ['sistem registrasi event', 'aplikasi QR check-in', 'registrasi event online', 'software event organizer', 'tiket digital QR code', 'check-in peserta seminar'],
     intro:
-      'Sistem registrasi event Sumber Rejeki Tech membantu panitia mengganti pendaftaran manual (kertas atau spreadsheet) dengan formulir online yang rapi. Peserta mendaftar lewat tautan, data langsung tersimpan, dan panitia bisa memantau jumlah pendaftar kapan saja. Cocok untuk seminar, konferensi, workshop, pelatihan, dan gathering.',
+      'Event Registration & QR Check-in System menggabungkan pendaftaran peserta dan pemeriksaan kehadiran dalam satu alur. Peserta mendaftar lewat formulir online dan menerima tiket digital dengan QR Code unik. Saat acara, petugas memindai QR Code, sistem mendeteksi tiket yang sudah dipakai, dan panitia memantau jumlah pendaftar serta peserta hadir. Cocok untuk seminar, workshop, konferensi, dan acara perusahaan.',
     faq: [
-      ['Apa itu sistem registrasi event online?', 'Sistem registrasi event online adalah aplikasi untuk menerima pendaftaran peserta lewat formulir digital, lengkap dengan data peserta, kategori, dan kuota, sehingga panitia tidak perlu merekap manual.'],
-      ['Apakah bisa mengatur kuota dan kategori peserta?', 'Bisa. Anda dapat mengatur kuota pendaftaran dan membedakan peserta berdasarkan kategori, misalnya umum, mahasiswa, atau VIP.'],
-      ['Apakah data peserta bisa diekspor ke Excel?', 'Bisa. Data pendaftar dapat diekspor ke Excel untuk kebutuhan laporan atau pengolahan lanjutan.'],
-    ],
-  },
-  'qr-checkin': {
-    title: 'Aplikasi QR Check-in Peserta Event',
-    desc: 'Aplikasi QR check-in peserta event: QR unik per peserta, scan lewat kamera, validasi tiket, cegah check-in ganda, dan mendukung banyak petugas sekaligus.',
-    keywords: ['aplikasi QR check-in', 'QR code check in peserta', 'scan QR kehadiran event', 'sistem absensi QR seminar', 'check-in peserta event'],
-    intro:
-      'Aplikasi QR check-in dari Sumber Rejeki Tech mempercepat antrean di meja registrasi. Setiap peserta memiliki QR unik yang dipindai petugas lewat kamera. Sistem memvalidasi tiket dan mencegah check-in ganda, serta mendukung beberapa petugas yang bekerja bersamaan. Cocok untuk seminar, konser, konferensi, pameran, dan acara perusahaan.',
-    faq: [
-      ['Bagaimana cara kerja QR check-in untuk event?', 'Setiap peserta mendapat QR unik. Saat tiba di lokasi, petugas memindai QR tersebut dengan kamera, lalu sistem memvalidasi dan mencatat kehadiran.'],
-      ['Apakah QR bisa dipakai dua kali?', 'Tidak. Sistem mencegah check-in ganda sehingga satu QR tidak bisa dipakai berulang kali.'],
-      ['Bisa dipakai banyak petugas sekaligus?', 'Bisa. Fitur multi-petugas memungkinkan beberapa petugas memindai peserta di pintu yang berbeda.'],
-    ],
-  },
-  'e-badge': {
-    title: 'E-Badge & ID Card Peserta Digital',
-    desc: 'Buat e-badge dan ID card peserta digital dengan template, foto, dan QR Code. Siap diunduh dalam format PDF untuk seminar, konferensi, dan pameran.',
-    keywords: ['e-badge peserta', 'ID card event digital', 'name tag digital', 'kartu peserta QR code', 'badge seminar PDF'],
-    intro:
-      'E-badge dan ID card digital membantu panitia membuat kartu identitas peserta tanpa desain satu per satu. Pilih template, tambahkan foto dan QR Code, lalu unduh sebagai PDF. Cocok untuk seminar, konferensi, pameran, dan acara formal.',
-    faq: [
-      ['Apa isi e-badge peserta?', 'E-badge dapat memuat template acara, foto peserta, dan QR Code yang bisa dipakai untuk check-in.'],
-      ['Dalam format apa badge bisa diunduh?', 'Badge dapat diunduh dalam format PDF.'],
+      ['Apa itu sistem registrasi event dengan QR check-in?', 'Sistem untuk menerima pendaftaran peserta secara online, menerbitkan tiket digital dengan QR Code, lalu memvalidasi kehadiran dengan memindai QR Code saat acara.'],
+      ['Apakah tiket QR bisa dipakai dua kali?', 'Sistem dirancang dengan validasi tiket ganda untuk mendeteksi tiket yang sudah digunakan.'],
+      ['Apakah data peserta bisa diekspor?', 'Ya, laporan peserta dirancang dapat diekspor ke PDF dan Excel.'],
     ],
   },
   'digital-guest-book': {
-    title: 'Buku Tamu Digital untuk Event & Kantor',
-    desc: 'Buku tamu digital: formulir tamu online, identitas pengunjung, waktu kedatangan otomatis, dan export laporan. Cocok untuk acara perusahaan dan pameran.',
-    keywords: ['buku tamu digital', 'aplikasi buku tamu online', 'buku tamu elektronik', 'guest book digital event', 'buku tamu QR'],
+    title: 'Buku Tamu Digital dengan Tanda Tangan Elektronik',
+    desc: 'Sistem buku tamu digital: formulir elektronik, tanda tangan digital di layar, ucapan, pencatatan waktu, pencarian tamu, dan ekspor laporan PDF atau Excel.',
+    keywords: ['buku tamu digital', 'aplikasi buku tamu online', 'buku tamu elektronik', 'tanda tangan digital tamu', 'guest book digital event'],
     intro:
-      'Buku tamu digital menggantikan buku tamu kertas dengan formulir online. Identitas pengunjung dan waktu kedatangan tercatat otomatis, dan laporannya bisa diekspor kapan saja. Cocok untuk acara perusahaan, kunjungan instansi, dan pameran.',
+      'Digital Guest Book System menggantikan buku tamu kertas dengan formulir elektronik. Tamu mengisi identitas, menandatangani langsung di layar, dan meninggalkan ucapan. Waktu pengisian tercatat, data mudah dicari, dan laporan dapat diunduh. Cocok untuk pernikahan, seminar, konferensi, acara perusahaan, dan acara resmi.',
     faq: [
-      ['Apa keuntungan buku tamu digital dibanding buku kertas?', 'Data tamu tersimpan rapi, waktu kedatangan tercatat otomatis, dan laporan bisa diekspor tanpa input ulang.'],
-      ['Apakah bisa dipakai untuk kunjungan kantor atau instansi?', 'Bisa. Buku tamu digital cocok untuk acara perusahaan, kunjungan instansi, dan pameran.'],
+      ['Apa keuntungan buku tamu digital dibanding buku kertas?', 'Data tamu tersimpan rapi, waktu pengisian tercatat, mudah dicari, dan laporan dapat diekspor tanpa input ulang.'],
+      ['Apakah tamu bisa tanda tangan di layar?', 'Ya, sistem ini dirancang dengan fitur tanda tangan digital langsung pada layar.'],
     ],
   },
-  'invitation-rsvp': {
-    title: 'Undangan Digital & RSVP Wedding Online',
-    desc: 'Undangan digital dengan RSVP untuk wedding, gathering, dan acara VIP: template undangan, konfirmasi hadir, rekap RSVP, dan tautan WhatsApp.',
-    keywords: ['undangan digital RSVP', 'RSVP wedding online', 'undangan pernikahan digital', 'konfirmasi kehadiran undangan', 'undangan digital WhatsApp'],
+  'visitor-management': {
+    title: 'Visitor Management System: Catat Pengunjung Event',
+    desc: 'Visitor management system untuk event dan venue: registrasi pengunjung, check-in dan check-out, multi-entry point, dashboard statistik, dan laporan kunjungan.',
+    keywords: ['visitor management system', 'sistem manajemen pengunjung', 'aplikasi pencatatan pengunjung', 'check-in check-out pengunjung', 'software pameran'],
     intro:
-      'Undangan digital dari Sumber Rejeki Tech dilengkapi RSVP, jadi tamu dapat langsung mengonfirmasi kehadiran dan Anda mendapat rekap yang jelas. Undangan dibagikan lewat tautan WhatsApp. Cocok untuk wedding, gathering, acara VIP, dan corporate event.',
+      'Visitor Management System membantu penyelenggara mengetahui siapa saja yang datang dan kapan mereka masuk maupun pulang. Pengunjung dicatat beserta kategorinya, beberapa pintu masuk dapat bekerja pada data yang sama, dan statistik kunjungan tampil di dashboard. Cocok untuk pameran, venue, perusahaan, dan kegiatan dengan banyak pengunjung.',
     faq: [
-      ['Apa itu RSVP pada undangan digital?', 'RSVP adalah konfirmasi kehadiran. Tamu menjawab hadir atau tidak langsung dari undangan, dan jawabannya masuk ke rekap.'],
-      ['Bagaimana cara membagikan undangan digital?', 'Undangan dibagikan melalui tautan yang bisa dikirim lewat WhatsApp.'],
-      ['Apakah cocok untuk undangan pernikahan?', 'Cocok. Selain wedding, undangan ini juga dipakai untuk gathering, acara VIP, dan corporate event.'],
-    ],
-  },
-  'ticketing-system': {
-    title: 'Sistem Tiket Event Online dengan QR Code',
-    desc: 'Sistem tiket event online: kategori tiket, QR Code, validasi tiket di lokasi, dan rekap penjualan. Untuk konser, seminar berbayar, workshop, dan festival.',
-    keywords: ['sistem tiket event', 'aplikasi ticketing event', 'tiket online QR code', 'jual tiket seminar online', 'software tiket konser'],
-    intro:
-      'Sistem tiket event membantu Anda mengelola tiket dari penjualan sampai masuk lokasi. Atur kategori tiket, setiap tiket memiliki QR Code, dan petugas memvalidasinya di pintu masuk. Rekap penjualan memudahkan pemantauan. Cocok untuk konser, seminar berbayar, workshop, dan festival.',
-    faq: [
-      ['Apakah tiket bisa dibuat lebih dari satu kategori?', 'Bisa. Anda dapat membuat beberapa kategori tiket sesuai kebutuhan acara.'],
-      ['Bagaimana tiket divalidasi di lokasi?', 'Setiap tiket memiliki QR Code yang divalidasi petugas saat peserta masuk.'],
-    ],
-  },
-  'lucky-draw': {
-    title: 'Aplikasi Lucky Draw Digital untuk Event',
-    desc: 'Aplikasi lucky draw digital dengan undian acak, animasi, dan tampilan layar besar. Cocok untuk gathering, seminar, dan acara perusahaan.',
-    keywords: ['aplikasi lucky draw', 'undian digital event', 'lucky draw online', 'software undian doorprize', 'random draw layar besar'],
-    intro:
-      'Aplikasi lucky draw digital membuat sesi undian doorprize lebih seru dan transparan. Pemenang dipilih secara acak dengan animasi, dan tampil di layar besar agar seluruh peserta dapat menyaksikannya.',
-    faq: [
-      ['Apakah pemenang dipilih secara acak?', 'Ya. Sistem melakukan undian acak dari daftar peserta.'],
-      ['Bisa ditampilkan di layar besar?', 'Bisa. Tampilan undian dirancang untuk layar besar saat acara berlangsung.'],
-    ],
-  },
-  'e-certificate': {
-    title: 'E-Sertifikat Otomatis untuk Seminar & Pelatihan',
-    desc: 'Buat dan kirim e-sertifikat seminar secara otomatis untuk banyak peserta. Template sertifikat, hasil PDF, dan pembagian cepat setelah acara.',
-    keywords: ['e-sertifikat otomatis', 'sertifikat seminar online', 'e-certificate seminar', 'generator sertifikat peserta', 'sertifikat digital PDF'],
-    intro:
-      'E-sertifikat digital menghemat waktu panitia setelah acara. Sertifikat dibuat dari template untuk banyak peserta sekaligus, sehingga tidak perlu mengedit satu per satu. Cocok untuk seminar, webinar, workshop, dan pelatihan.',
-    faq: [
-      ['Apa itu e-sertifikat?', 'E-sertifikat adalah sertifikat digital yang dibuat dan dibagikan secara online, tanpa cetak.'],
-      ['Apakah sertifikat bisa dibuat untuk banyak peserta sekaligus?', 'Bisa. Sertifikat dibuat otomatis dari template untuk seluruh peserta.'],
+      ['Apa fungsi visitor management system?', 'Mencatat identitas, kategori, waktu masuk, dan waktu keluar pengunjung, serta menyajikan statistik dan laporan kunjungan.'],
+      ['Apakah mendukung banyak pintu masuk?', 'Ya, sistem ini dirancang dengan fitur multi-entry point.'],
     ],
   },
   'event-dashboard': {
-    title: 'Software Event Organizer: Dashboard Acara',
-    desc: 'Software event organizer untuk memantau acara dalam satu dashboard: pendaftar, kehadiran, dan operasional. Terhubung dengan registrasi, check-in, dan laporan.',
-    keywords: ['software event organizer', 'aplikasi event organizer', 'dashboard manajemen event', 'sistem manajemen acara', 'event management software Indonesia'],
+    title: 'Dashboard Manajemen Acara untuk Event Organizer',
+    desc: 'Dashboard manajemen acara dan aplikasi event organizer: ringkasan acara, statistik, jadwal, monitoring peserta dan aktivitas, serta laporan acara dalam satu tampilan.',
+    keywords: ['aplikasi manajemen acara', 'dashboard event organizer', 'software event organizer', 'aplikasi event organizer', 'sistem manajemen event', 'monitoring acara'],
     intro:
-      'Dashboard acara adalah pusat kendali bagi event organizer. Pantau pendaftar, kehadiran, dan kegiatan operasional dalam satu tampilan, lalu gabungkan dengan sistem registrasi, QR check-in, rundown, dan laporan dari Sumber Rejeki Tech.',
+      'Event Management Dashboard adalah pusat pemantauan bagi event organizer. Ringkasan acara, statistik, jadwal, pendaftaran dan kehadiran peserta, serta aktivitas operasional ditampilkan dalam satu tempat, sehingga keputusan di lapangan lebih cepat. Ringkasan keuangan dan tugas kru tersedia jika sistem terkait sudah terintegrasi.',
     faq: [
-      ['Apa saja yang dibutuhkan software untuk event organizer?', 'Umumnya registrasi peserta, check-in, tiket, rundown, manajemen kru dan vendor, serta laporan. Semuanya tersedia sebagai sistem modular di Sumber Rejeki Tech.'],
-      ['Apakah bisa memilih hanya sistem yang dibutuhkan?', 'Bisa. Sistem bersifat modular, jadi Anda memilih yang dibutuhkan lalu menambah seiring acara berkembang.'],
+      ['Apa isi dashboard manajemen acara?', 'Ringkasan acara, statistik kegiatan, jadwal, monitoring peserta dan aktivitas, notifikasi, serta laporan acara.'],
+      ['Apakah terhubung dengan produk lain?', 'Integrasi dengan produk lain, seperti keuangan dan tugas kru, hanya ditawarkan jika koneksi dan hak akses antar-sistem sudah dikembangkan.'],
+    ],
+  },
+  'crew-management': {
+    title: 'Aplikasi Manajemen Kru & Tugas Acara',
+    desc: 'Sistem manajemen kru dan tugas acara: data kru, divisi, pembagian tugas, PIC, jadwal kerja, kanban, update progres, lampiran, dan laporan pekerjaan.',
+    keywords: ['aplikasi manajemen kru event', 'manajemen tugas acara', 'software event organizer', 'kanban tugas event', 'pembagian tugas kru'],
+    intro:
+      'Crew & Task Management System membantu EO dan WO mengatur tim selama persiapan dan hari pelaksanaan. Data kru dikelompokkan per jabatan dan divisi, tugas diberikan lengkap dengan penanggung jawab, dan progres terlihat pada kanban. Lampiran dokumen atau foto dan laporan pekerjaan membantu koordinasi tim lapangan.',
+    faq: [
+      ['Apakah bisa menentukan penanggung jawab tiap tugas?', 'Ya, sistem ini dirancang dengan fitur penanggung jawab (PIC) pada setiap pekerjaan.'],
+      ['Bagaimana progres pekerjaan dipantau?', 'Lewat kanban tugas berdasarkan status, pembaruan progres, dan laporan pekerjaan.'],
+    ],
+  },
+  'e-certificate': {
+    title: 'Sistem E-Certificate: Sertifikat Elektronik Otomatis',
+    desc: 'Sistem e-certificate untuk seminar dan pelatihan: desain sertifikat, template, penerbitan massal, nomor unik, download PDF, dan QR Verification keaslian.',
+    keywords: ['sistem e-certificate', 'sertifikat elektronik otomatis', 'aplikasi e-sertifikat seminar', 'penerbitan sertifikat massal', 'verifikasi sertifikat QR'],
+    intro:
+      'E-Certificate System memudahkan penerbitan sertifikat untuk banyak peserta. Desain sertifikat dari template atau unggah desain sendiri, atur teks, logo, dan tanda tangan, lalu terbitkan secara massal, termasuk berdasarkan data kehadiran. Setiap sertifikat memiliki nomor unik, tersedia sebagai PDF, dan keasliannya dapat diperiksa lewat QR Verification.',
+    faq: [
+      ['Apakah sertifikat bisa diterbitkan sekaligus untuk banyak peserta?', 'Ya, sistem ini dirancang dengan penerbitan massal, termasuk berdasarkan data kehadiran.'],
+      ['Bagaimana keaslian sertifikat diperiksa?', 'Melalui QR Verification yang memverifikasi keaslian sertifikat.'],
+      ['Apakah bisa memakai desain sertifikat sendiri?', 'Ya, tersedia fitur upload desain selain template siap pakai.'],
+    ],
+  },
+  'invitation-rsvp': {
+    title: 'Undangan Digital & RSVP untuk Wedding Organizer',
+    desc: 'Software wedding organizer untuk undangan digital dan RSVP online: template, undangan personal per tamu, konfirmasi kehadiran, rekap RSVP, dan bagikan lewat WhatsApp.',
+    keywords: ['software wedding organizer', 'undangan digital', 'RSVP online', 'undangan pernikahan digital', 'konfirmasi kehadiran tamu', 'aplikasi undangan WhatsApp'],
+    intro:
+      'Invitation & RSVP System membantu wedding organizer dan event organizer membuat undangan digital yang personal. Atur tampilan, informasi acara, dan galeri foto, buat tautan khusus untuk setiap tamu, lalu bagikan lewat WhatsApp. Tamu mengonfirmasi kehadiran dan jumlah pendamping, dan penyelenggara melihat rekap RSVP secara langsung.',
+    faq: [
+      ['Apakah tiap tamu bisa mendapat tautan undangan sendiri?', 'Ya, sistem ini dirancang dengan undangan personal berdasarkan nama tamu.'],
+      ['Bagaimana membagikan undangan?', 'Undangan dapat dibagikan melalui WhatsApp Sharing.'],
+      ['Apakah bisa mengatur siapa yang boleh membuka undangan?', 'Tersedia pengaturan privasi untuk mengatur akses undangan.'],
+    ],
+  },
+  'event-game': {
+    title: 'Event Game: Puzzle, Quiz Battle & Spin Wheel Lucky Draw',
+    desc: 'Event game interaktif untuk TV atau monitor touchscreen: jigsaw puzzle, sliding puzzle, memory card, quiz battle, dan spin wheel lucky draw. Tanpa HP pribadi peserta.',
+    keywords: ['event game', 'game interaktif acara', 'spin wheel lucky draw', 'quiz battle event', 'permainan touchscreen event', 'jigsaw puzzle event', 'hiburan gathering'],
+    intro:
+      'Event Game System memeriahkan acara lewat TV atau monitor touchscreen. Peserta bermain langsung di layar yang disediakan penyelenggara, tanpa HP pribadi atau QR untuk bergabung. Satu produk berisi lima modul: Jigsaw Puzzle, Sliding Picture Puzzle, Memory Card Matching, Quiz Battle, dan Spin Wheel / Lucky Draw, lengkap dengan dashboard operator, tampilan Big Screen, dan mode offline.',
+    faq: [
+      ['Apa saja permainan dalam Event Game System?', 'Lima modul: Jigsaw Puzzle, Sliding Picture Puzzle, Memory Card Matching, Quiz Battle, dan Spin Wheel / Lucky Draw.'],
+      ['Apakah peserta perlu memakai HP?', 'Tidak. Peserta bermain langsung di TV atau monitor touchscreen yang disediakan penyelenggara.'],
+      ['Apakah bisa dipakai tanpa internet?', 'Sistem ini dirancang dengan mode offline. Koneksi internet tetap disarankan untuk persiapan konten.'],
+    ],
+  },
+  'event-photobooth': {
+    title: 'Photobooth Digital Berbasis Web untuk Event',
+    desc: 'Event photobooth digital berbasis web: pengunjung foto lewat kamera HP, frame acara otomatis, countdown, multi-shot, unduh foto, dan bagikan lewat WhatsApp.',
+    keywords: ['photobooth digital', 'photobooth event', 'photobooth QR HP', 'frame foto acara', 'photobooth tanpa aplikasi', 'photobooth pernikahan'],
+    intro:
+      'Event Photobooth System memungkinkan pengunjung mengambil foto dengan kamera HP sendiri tanpa memasang aplikasi. Pengunjung memindai QR Access, memotret dengan hitung mundur, dan foto otomatis digabung dengan frame acara. Hasilnya bisa diunduh dalam JPG atau PNG dan dibagikan lewat WhatsApp. Membutuhkan HTTPS, izin kamera, dan koneksi internet.',
+    faq: [
+      ['Apakah pengunjung perlu memasang aplikasi?', 'Tidak. Photobooth berjalan lewat browser di HP pengunjung.'],
+      ['Apa yang dibutuhkan agar photobooth berjalan?', 'HTTPS, izin kamera, dan koneksi internet untuk pengiriman serta penyimpanan foto.'],
+      ['Apakah frame bisa disesuaikan dengan acara?', 'Ya, penyelenggara dapat mengunggah dan mengelola frame PNG transparan.'],
+    ],
+  },
+  'event-budget': {
+    title: 'Sistem Anggaran Acara: Budget vs Actual',
+    desc: 'Sistem anggaran dan keuangan acara untuk EO dan WO: budget planning, pemasukan, pengeluaran, bukti transaksi, Budget vs Actual, dan laporan PDF atau Excel.',
+    keywords: ['sistem anggaran acara', 'aplikasi budget event', 'budget vs actual event', 'laporan keuangan event', 'software event planner'],
+    intro:
+      'Event Budgeting System membantu penyelenggara menyusun rencana anggaran, mengelompokkan biaya per kategori, dan mencatat pemasukan serta pengeluaran lengkap dengan bukti transaksi. Fitur Budget vs Actual membandingkan anggaran dengan realisasi, dan laporan keuangan dapat diunduh dalam PDF atau Excel.',
+    faq: [
+      ['Apa itu Budget vs Actual?', 'Perbandingan antara anggaran yang direncanakan dan biaya yang benar-benar terealisasi.'],
+      ['Apakah bukti pembayaran bisa dilampirkan?', 'Ya, tersedia fitur upload bukti transaksi.'],
+    ],
+  },
+  'vendor-management': {
+    title: 'Sistem Manajemen Vendor untuk EO & WO',
+    desc: 'Sistem manajemen vendor event: database vendor, penawaran harga, perbandingan, kontrak kerja sama, riwayat, evaluasi vendor, dan laporan untuk EO dan WO.',
+    keywords: ['sistem manajemen vendor', 'database vendor event', 'aplikasi vendor management', 'perbandingan penawaran vendor', 'software event planner'],
+    intro:
+      'Vendor Management System menyimpan data vendor dan penyedia jasa acara dalam satu database: profil, kontak, penawaran harga, dokumen, dan kontrak kerja sama. Penyelenggara dapat membandingkan harga dan layanan, mencatat riwayat proyek, serta memberi evaluasi untuk menentukan vendor pada acara berikutnya.',
+    faq: [
+      ['Apakah bisa membandingkan penawaran vendor?', 'Ya, tersedia fitur perbandingan vendor untuk harga dan layanan.'],
+      ['Apakah dokumen kontrak bisa disimpan?', 'Ya, kontrak kerja sama dan dokumen vendor dapat disimpan sebagai lampiran.'],
+    ],
+  },
+  'equipment-inventory': {
+    title: 'Sistem Inventaris Peralatan Event & Rental',
+    desc: 'Sistem inventaris peralatan event dan rental: data barang, QR/barcode, stok, peminjaman, pengembalian, pemeriksaan kondisi, jadwal perawatan, dan laporan.',
+    keywords: ['sistem inventaris peralatan event', 'aplikasi inventaris rental event', 'peminjaman peralatan', 'QR barcode inventaris', 'software rental peralatan event'],
+    intro:
+      'Event Equipment Inventory System mencatat seluruh peralatan yang dimiliki atau dipakai penyelenggara, lengkap dengan kategori, kode unik, label QR/Barcode, stok, dan kondisi. Peminjaman dan pengembalian tercatat, barang diperiksa sebelum dan sesudah dipakai, dan jadwal perawatan dapat diatur. Cocok untuk EO, WO, dan rental peralatan event.',
+    faq: [
+      ['Apakah barang bisa diberi label QR atau barcode?', 'Ya, tersedia fitur QR/Barcode untuk memberi label barang.'],
+      ['Apakah peminjaman dan pengembalian tercatat?', 'Ya, keduanya dicatat beserta pemeriksaan kondisi barang dan riwayat penggunaan.'],
+    ],
+  },
+  'ticketing-system': {
+    title: 'Software Ticketing Event: Jual Tiket Online & Pembayaran',
+    desc: 'Software ticketing event untuk konser, seminar, dan festival: kategori dan kuota tiket, pembayaran online, e-ticket QR Code, check-in, dan laporan penjualan.',
+    keywords: ['software ticketing event', 'sistem tiket online', 'jual tiket konser online', 'e-ticket QR code', 'payment gateway tiket event'],
+    intro:
+      'Event Ticketing & Payment System mencakup seluruh alur penjualan tiket: kategori tiket, harga, kuota, halaman pembelian, pembayaran online melalui payment gateway, verifikasi pembayaran, dan penerbitan e-ticket dengan QR Code unik. Tiket divalidasi saat check-in dan pencegahan tiket ganda membantu mencegah pemakaian berulang. Laporan penjualan dan pembayaran membantu memantau transaksi.',
+    faq: [
+      ['Bagaimana pembayaran tiket diproses?', 'Melalui integrasi payment gateway, lalu status pembayaran diverifikasi sebelum e-ticket diterbitkan.'],
+      ['Apakah tiket bisa dipakai berulang?', 'Tidak. Sistem dirancang dengan pencegahan tiket ganda.'],
+      ['Acara apa saja yang cocok?', 'Konser, seminar, workshop, festival, pameran, dan acara lain yang menjual tiket.'],
     ],
   },
 };
 
-// Fallback otomatis untuk produk tanpa konten khusus.
-export const getSeo = (product) => {
-  const custom = seoData[product.slug];
-  if (custom) return custom;
+// Fallback hanya jika ada produk baru tanpa entri di seoData.
+const fallbackSeo = (product) => {
   const title = product.title.id;
-  const features = product.features.id.slice(0, 4).join(', ').toLowerCase();
   return {
     title: `${title} untuk Event`,
-    desc: `${product.desc.id.replace(/\.$/, '')}. Fitur: ${features}. Cocok untuk ${product.useCases.id.replace(/\.$/, '').toLowerCase()}.`,
-    keywords: [title.toLowerCase(), `aplikasi ${title.toLowerCase()}`, `sistem ${title.toLowerCase()} event`],
-    intro: `${product.desc.id} ${product.useCases.id}`,
+    desc: product.desc.id,
+    keywords: [title.toLowerCase(), `aplikasi ${title.toLowerCase()}`],
+    intro: product.desc.id,
+    faq: [],
+  };
+};
+
+export const getSeo = (product) => {
+  const base = seoData[product.slug] || fallbackSeo(product);
+  const name = product.title.id;
+  const status = STATUS_LABEL_ID[product.status] || STATUS_LABEL_ID.InDevelopment;
+  const statusAnswer =
+    product.status === 'Available'
+      ? `Ya, ${name} tersedia dan disiapkan sesuai kebutuhan acara Anda. Hubungi kami lewat WhatsApp untuk kebutuhan, jadwal pengerjaan, dan cara pemesanan.`
+      : `Saat ini ${name} berstatus ${status}, sehingga fitur dan ketersediaannya dapat berubah. Hubungi kami lewat WhatsApp untuk informasi terbaru.`;
+  return {
+    ...base,
     faq: [
-      [`Apa itu ${title}?`, product.desc.id],
-      [`Fitur apa saja pada ${title}?`, `${product.features.id.join(', ')}.`],
+      ...base.faq,
+      [`Apakah ${name} sudah bisa digunakan?`, statusAnswer],
+      [`Bagaimana cara berkonsultasi atau memesan ${name}?`, 'Klik tombol Konsultasi WhatsApp di halaman ini. Pesan otomatis akan terisi, lalu tim kami menjelaskan fitur, harga, dan cara pemesanan.'],
     ],
   };
 };
 
 export const seoBySlug = Object.fromEntries(productsData.map((p) => [p.slug, getSeo(p)]));
 
-// Halaman yang sering dicari, dipakai untuk blok tautan internal di beranda.
+// Produk untuk blok tautan internal di beranda.
 export const featuredKeywordSlugs = [
-  'event-registration', 'qr-checkin', 'event-dashboard', 'invitation-rsvp',
-  'ticketing-system', 'e-certificate', 'digital-guest-book', 'lucky-draw',
+  'event-registration', 'ticketing-system', 'invitation-rsvp', 'e-certificate',
+  'digital-guest-book', 'event-game', 'event-dashboard', 'event-photobooth',
 ];

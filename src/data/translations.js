@@ -2,7 +2,7 @@ export const translations = {
   en: {
     seo: {
       defaultTitle: "Sumber Rejeki Tech | Smart Event Technology Solutions",
-      defaultDesc: "Digital solutions for Event Organizers, Wedding Organizers, companies, and institutions: registration, QR check-in, e-badge, lucky draw, analytics, and more.",
+      defaultDesc: "Digital solutions for Event Organizers, Wedding Organizers, companies, and institutions: registration, QR check-in, digital invitations, e-certificates, games, ticketing, and more.",
       home: "Smart Event Technology Solutions",
     },
     nav: { home: "Home", about: "About", products: "Products", solutions: "Solutions", contact: "Contact", talk: "Let's Talk", menu: "Open menu", closeMenu: "Close menu", switchLang: "Switch to Indonesian", main: "Main navigation", skip: "Skip to content" },
@@ -12,7 +12,7 @@ export const translations = {
       desc: "Digital solutions to help Event Organizers, Wedding Organizers, companies, and institutions manage events more efficiently — from participant registration to event operations and reporting.",
       btnExplore: "Explore Our Solutions", btnDiscuss: "Discuss Your Event",
       stats: [
-        { value: "24", label: "Event systems" },
+        { value: "13", label: "Event systems" },
         { value: "4", label: "System categories" },
         { value: "6", label: "Event types supported" }
       ]
@@ -24,15 +24,15 @@ export const translations = {
     solutions: {
       title: "Our Solutions", desc: "Four main system categories to support the success of your event.",
       items: [
-        { title: "Registration & Attendance", desc: "Digital registration and attendance validation system." },
-        { title: "Event Experience", desc: "Enhance interaction and participant experience." },
-        { title: "Event Operations", desc: "Manage operations, crew, and event flow." },
-        { title: "Reporting & Business", desc: "Data analysis, reporting, and event business management." }
+        { title: "Event Operation", desc: "Registration, QR check-in, guest book, visitors, dashboard, and crew management." },
+        { title: "Event Engagement", desc: "E-certificates, digital invitations, and RSVP." },
+        { title: "Event Creative & Entertainment", desc: "Interactive event games and digital photobooth." },
+        { title: "Event Business Management", desc: "Budgeting, vendors, equipment inventory, and ticketing." }
       ]
     },
     products: {
-      title: "Featured Systems", desc: "The most widely used featured systems.", viewAll: "View All 24 Products",
-      statusAvailable: "Available", statusComingSoon: "Coming Soon", viewDetails: "View Details"
+      title: "Featured Systems", desc: "The most widely used featured systems.", viewAll: "View All 13 Products",
+      statusAvailable: "Available", statusInDevelopment: "In Development", statusComingSoon: "Coming Soon", viewDetails: "View Details"
     },
     howItWorks: {
       title: "How It Works", desc: "A structured and transparent cooperation process.",
@@ -52,19 +52,20 @@ export const translations = {
     footer: {
       desc: "A digital technology solution provider focused on event organizing needs. Helping manage activities more effectively and professionally.",
       nav: "Navigation", contact: "Contact", privacy: "Privacy Policy", terms: "Terms & Conditions", rights: "All rights reserved.",
-      tagline: "Your Technology Partner."
+      tagline: "Your Technology Partner.", follow: "Contact and social media"
     },
     categories: {
-      "Registration & Attendance": "Registration & Attendance",
-      "Event Experience": "Event Experience",
-      "Event Operations": "Event Operations",
-      "Reporting & Business": "Reporting & Business"
+      "Event Operation": "Event Operation",
+      "Event Engagement": "Event Engagement",
+      "Event Creative & Entertainment": "Event Creative & Entertainment",
+      "Event Business Management": "Event Business Management"
     },
     productsPage: {
-      title: "Product Catalog", desc: "Explore 24 technology systems ready to support your event's success.",
+      title: "Product Catalog", desc: "Explore 13 event software products in 4 categories, from registration and operations to business management.",
       search: "Search systems...", searchLabel: "Search systems", filterLabel: "Filter by category",
       all: "All", noResult: "No products found.", resultCount: "systems shown",
-      available: "Available", comingSoon: "Coming Soon"
+      available: "Available", comingSoon: "Coming Soon", inDevelopment: "In Development",
+      btnDetail: "View Details", btnWA: "Consult via WhatsApp", highlights: "Highlights"
     },
     productDetail: {
       home: "Home", products: "Products", features: "Key Features", useCases: "Use Cases",
@@ -72,7 +73,8 @@ export const translations = {
       sideDesc: "Want to know more or see how this system fits your event? Talk to our team.",
       notFound: "Product not found", back: "Back to Catalog",
       related: "Related Systems", category: "Category",
-      waMessage: "Hello, I'm interested in the {product} system. Could we discuss it?"
+      waMessage: "Hello Sumber Rejeki Tech, I am interested in {product}. I would like to know the features, price, and how to order.",
+      sections: { about: "About", benefits: "Purpose & Benefits", targets: "Target Users", features: "Complete Features", modules: "Five Game Modules", common: "Common Features", how: "How It Works", devices: "Device Requirements", internet: "Internet Requirements", security: "Security & Data Storage", faq: "Frequently Asked Questions", screenshots: "Screenshots", noScreenshots: "Application screenshots will be added once available.", devNotice: "This product is not yet marked Available. Features and specifications may change. Contact us for the latest information.", idOnly: "Detailed product content is currently available in Indonesian." }
     },
     contactPage: {
       title: "Contact Us", desc: "Have a question or want to design an event? Fill out the form below, our team will contact you shortly.",
@@ -147,19 +149,19 @@ export const translations = {
       desc: "Discover how our technology can be tailored to specific event types.",
       cta: "Discuss this solution",
       items: [
-        { title: "Seminar & Conference", desc: "Registration, QR Check-in, E-Badge, Polling, E-Certificate." },
-        { title: "Wedding & Engagement", desc: "Invitation, RSVP, Seating, Guest Book, Photobooth." },
-        { title: "Exhibition & Expo", desc: "Visitor Management, Ticketing, Social Wall, Analytics." },
-        { title: "Corporate & Gathering", desc: "Invitation, Lucky Draw, Photobooth, Souvenir, Budget." },
-        { title: "Workshop & Training", desc: "Registration, Check-in, E-Certificate, Feedback." },
-        { title: "Concert & Festival", desc: "Ticketing, Check-in, Visitor Management, Analytics." }
+        { title: "Seminar & Conference", desc: "Registration & QR Check-in, Event Dashboard, E-Certificate, Event Game." },
+        { title: "Wedding & Engagement", desc: "Invitation & RSVP, Digital Guest Book, Photobooth, Vendor Management." },
+        { title: "Exhibition & Expo", desc: "Visitor Management, Ticketing, Digital Guest Book, Event Dashboard." },
+        { title: "Corporate & Gathering", desc: "Invitation & RSVP, Event Game (Spin Wheel), Photobooth, Budgeting." },
+        { title: "Workshop & Training", desc: "Registration & QR Check-in, E-Certificate, Crew & Task Management." },
+        { title: "Concert & Festival", desc: "Ticketing & Payment, QR Check-in, Visitor Management, Equipment Inventory." }
       ]
     }
   },
   id: {
     seo: {
-      defaultTitle: "Sumber Rejeki Tech | Solusi Teknologi Acara Cerdas",
-      defaultDesc: "Solusi digital untuk Event Organizer, Wedding Organizer, perusahaan, dan institusi: registrasi, QR check-in, e-badge, lucky draw, analitik, dan lainnya.",
+      defaultTitle: "Sumber Rejeki Tech | Software Event Organizer & EO Pekalongan",
+      defaultDesc: "Sumber Rejeki Tech: software untuk event organizer (EO) Pekalongan dan seluruh Indonesia. Sistem registrasi event online, QR check-in, tiket, undangan digital RSVP, e-sertifikat, buku tamu digital, dan lucky draw.",
       home: "Solusi Teknologi Acara Cerdas",
     },
     nav: { home: "Beranda", about: "Tentang", products: "Produk", solutions: "Solusi", contact: "Kontak", talk: "Hubungi Kami", menu: "Buka menu", closeMenu: "Tutup menu", switchLang: "Ganti ke bahasa Inggris", main: "Navigasi utama", skip: "Lompat ke konten" },
@@ -169,7 +171,7 @@ export const translations = {
       desc: "Solusi digital untuk membantu Event Organizer, Wedding Organizer, perusahaan, dan institusi mengelola acara secara lebih efisien — dari pendaftaran peserta hingga operasional dan pelaporan acara.",
       btnExplore: "Jelajahi Solusi", btnDiscuss: "Diskusikan Acara Anda",
       stats: [
-        { value: "24", label: "Sistem acara" },
+        { value: "13", label: "Sistem acara" },
         { value: "4", label: "Kategori sistem" },
         { value: "6", label: "Jenis acara didukung" }
       ]
@@ -181,15 +183,15 @@ export const translations = {
     solutions: {
       title: "Solusi Kami", desc: "Empat kategori sistem utama untuk mendukung kesuksesan acara Anda.",
       items: [
-        { title: "Registrasi & Kehadiran", desc: "Sistem pendaftaran dan validasi kehadiran digital." },
-        { title: "Pengalaman Acara", desc: "Tingkatkan interaksi dan pengalaman peserta acara." },
-        { title: "Operasional Acara", desc: "Kelola operasional, kru, dan jalannya acara." },
-        { title: "Pelaporan & Bisnis", desc: "Analisis data, laporan, dan pengelolaan bisnis acara." }
+        { title: "Event Operation", desc: "Registrasi, QR check-in, buku tamu, pengunjung, dashboard, dan manajemen kru." },
+        { title: "Event Engagement", desc: "E-sertifikat, undangan digital, dan RSVP." },
+        { title: "Event Creative & Entertainment", desc: "Game interaktif acara dan photobooth digital." },
+        { title: "Event Business Management", desc: "Anggaran, vendor, inventaris peralatan, dan ticketing." }
       ]
     },
     products: {
-      title: "Sistem Unggulan", desc: "Sistem unggulan yang paling banyak digunakan.", viewAll: "Lihat Semua 24 Produk",
-      statusAvailable: "Tersedia", statusComingSoon: "Segera Hadir", viewDetails: "Lihat Detail"
+      title: "Sistem Unggulan", desc: "Sistem unggulan yang paling banyak digunakan.", viewAll: "Lihat Semua 13 Produk",
+      statusAvailable: "Tersedia", statusInDevelopment: "Dalam Pengembangan", statusComingSoon: "Coming Soon", viewDetails: "Lihat Detail"
     },
     howItWorks: {
       title: "Cara Kerja", desc: "Proses kerja sama yang terstruktur dan transparan.",
@@ -209,19 +211,20 @@ export const translations = {
     footer: {
       desc: "Penyedia solusi teknologi digital yang berfokus pada kebutuhan penyelenggaraan acara. Membantu pengelolaan kegiatan yang lebih efektif dan profesional.",
       nav: "Navigasi", contact: "Kontak", privacy: "Kebijakan Privasi", terms: "Syarat & Ketentuan", rights: "Hak cipta dilindungi undang-undang.",
-      tagline: "Mitra Teknologi Anda."
+      tagline: "Mitra Teknologi Anda.", follow: "Kontak dan media sosial"
     },
     categories: {
-      "Registration & Attendance": "Registrasi & Kehadiran",
-      "Event Experience": "Pengalaman Acara",
-      "Event Operations": "Operasional Acara",
-      "Reporting & Business": "Pelaporan & Bisnis"
+      "Event Operation": "Event Operation",
+      "Event Engagement": "Event Engagement",
+      "Event Creative & Entertainment": "Event Creative & Entertainment",
+      "Event Business Management": "Event Business Management"
     },
     productsPage: {
-      title: "Katalog Produk", desc: "Jelajahi 24 sistem teknologi yang siap mendukung kesuksesan acara Anda.",
+      title: "Katalog Produk", desc: "Jelajahi 13 produk software event dalam 4 kategori, dari registrasi dan operasional hingga manajemen bisnis acara.",
       search: "Cari sistem...", searchLabel: "Cari sistem", filterLabel: "Filter berdasarkan kategori",
       all: "Semua", noResult: "Produk tidak ditemukan.", resultCount: "sistem ditampilkan",
-      available: "Tersedia", comingSoon: "Segera"
+      available: "Tersedia", comingSoon: "Coming Soon", inDevelopment: "Dalam Pengembangan",
+      btnDetail: "Lihat Detail", btnWA: "Konsultasi WhatsApp", highlights: "Unggulan"
     },
     productDetail: {
       home: "Beranda", products: "Produk", features: "Fitur Utama", useCases: "Contoh Penggunaan",
@@ -229,7 +232,8 @@ export const translations = {
       sideDesc: "Ingin tahu lebih lanjut atau melihat kecocokan sistem ini untuk acara Anda? Bicarakan dengan tim kami.",
       notFound: "Produk tidak ditemukan", back: "Kembali ke Katalog",
       related: "Sistem Terkait", category: "Kategori",
-      waMessage: "Halo, saya tertarik dengan sistem {product}. Bisa kita diskusikan?"
+      waMessage: "Halo Sumber Rejeki Tech, saya tertarik dengan {product}. Saya ingin mengetahui fitur, harga, dan cara pemesanannya.",
+      sections: { about: "Tentang", benefits: "Tujuan & Manfaat", targets: "Target Pengguna", features: "Fitur Lengkap", modules: "Lima Modul Permainan", common: "Fitur Umum", how: "Cara Kerja Sistem", devices: "Kebutuhan Perangkat", internet: "Kebutuhan Koneksi Internet", security: "Keamanan & Penyimpanan Data", faq: "Pertanyaan yang Sering Diajukan", screenshots: "Screenshot Aplikasi", noScreenshots: "Screenshot aplikasi akan ditambahkan setelah tersedia.", devNotice: "Produk ini belum berstatus Tersedia. Fitur dan spesifikasi dapat berubah. Hubungi kami untuk informasi terbaru.", idOnly: "" }
     },
     contactPage: {
       title: "Hubungi Kami", desc: "Punya pertanyaan atau ingin merancang acara? Isi formulir di bawah ini, tim kami akan segera menghubungi Anda.",
@@ -304,12 +308,12 @@ export const translations = {
       desc: "Temukan bagaimana teknologi kami dapat disesuaikan untuk jenis acara tertentu.",
       cta: "Diskusikan solusi ini",
       items: [
-        { title: "Seminar & Konferensi", desc: "Registrasi, QR Check-in, E-Badge, Polling, E-Sertifikat." },
-        { title: "Wedding & Engagement", desc: "Undangan, RSVP, Seating, Buku Tamu, Photobooth." },
-        { title: "Pameran & Expo", desc: "Visitor Management, Tiket, Social Wall, Analitik." },
-        { title: "Corporate & Gathering", desc: "Undangan, Lucky Draw, Photobooth, Souvenir, Anggaran." },
-        { title: "Workshop & Pelatihan", desc: "Registrasi, Check-in, E-Sertifikat, Feedback." },
-        { title: "Konser & Festival", desc: "Tiket, Check-in, Visitor Management, Analitik." }
+        { title: "Seminar & Konferensi", desc: "Registrasi & QR Check-in, Dashboard Acara, E-Sertifikat, Event Game." },
+        { title: "Wedding & Engagement", desc: "Undangan & RSVP, Buku Tamu Digital, Photobooth, Manajemen Vendor." },
+        { title: "Pameran & Expo", desc: "Visitor Management, Ticketing, Buku Tamu Digital, Dashboard Acara." },
+        { title: "Corporate & Gathering", desc: "Undangan & RSVP, Event Game (Spin Wheel), Photobooth, Anggaran." },
+        { title: "Workshop & Pelatihan", desc: "Registrasi & QR Check-in, E-Sertifikat, Manajemen Kru & Tugas." },
+        { title: "Konser & Festival", desc: "Ticketing & Payment, QR Check-in, Visitor Management, Inventaris Peralatan." }
       ]
     }
   }

@@ -1,3 +1,5 @@
+import { SOCIAL } from './social';
+
 // Data kontak dibaca dari environment (.env / Build variables Cloudflare).
 // Nilai setelah "||" adalah cadangan jika variabel tidak terisi.
 // Semua nilai ini bersifat publik (tampil di situs / access key Web3Forms bersifat public).
@@ -19,6 +21,7 @@ export const SITE = {
   email: env.VITE_CONTACT_EMAIL || 'sumberrejekitechofficial@gmail.com',
   whatsapp: waNumber,
   phoneDisplay: formatPhone(waNumber),
+  social: SOCIAL,
   web3formsKey: env.VITE_WEB3FORMS_ACCESS_KEY || '075f43e9-6012-4356-b0fb-f67adb6609b9',
 };
 

@@ -4,16 +4,17 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { productsData } from '../src/data/products.js';
-import { seoBySlug } from '../src/data/seo.js';
+import { productsData, parseFeature } from '../src/data/products.js';
+import { seoBySlug, STATUS_LABEL_ID } from '../src/data/seo.js';
 import {
-  buildOrganizationJsonLd, buildWebSiteJsonLd, buildProductJsonLd, buildBreadcrumbJsonLd,
+  buildOrganizationJsonLd, buildWebSiteJsonLd, buildProductJsonLd, buildBreadcrumbJsonLd, buildItemListJsonLd,
 } from '../src/data/jsonld.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = join(root, 'dist');
 const SITE_URL = (process.env.VITE_SITE_URL || 'https://sumberrejekitech.web.id').replace(/\/$/, '');
 const EMAIL = process.env.VITE_CONTACT_EMAIL || 'sumberrejekitechofficial@gmail.com';
+const PHONE = '+' + (process.env.VITE_WHATSAPP_NUMBER || '6285931418013').replace(/\D/g, '');
 const SITE_NAME = 'Sumber Rejeki Tech';
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -24,28 +25,31 @@ const template = readFileSync(join(dist, 'index.html'), 'utf8');
 
 const HOME = {
   path: '/',
-  title: 'Software Event Organizer, Registrasi Event & QR Check-in | Sumber Rejeki Tech',
-  desc: 'Sumber Rejeki Tech menyediakan sistem registrasi event online, aplikasi QR check-in, tiket event, undangan digital RSVP wedding, e-sertifikat otomatis, buku tamu digital, dan lucky draw.',
-  keywords: ['software event organizer', 'sistem registrasi event', 'aplikasi QR check-in', 'undangan digital RSVP', 'sistem tiket event', 'e-sertifikat otomatis', 'buku tamu digital', 'lucky draw digital'],
+  title: 'Sumber Rejeki Tech | Software Event Organizer & EO Pekalongan',
+  desc: 'Sumber Rejeki Tech: software untuk event organizer (EO) Pekalongan dan seluruh Indonesia. Sistem registrasi event online, QR check-in, tiket, undangan digital RSVP, e-sertifikat, buku tamu digital, dan lucky draw.',
+  keywords: ['sumber rejeki tech', 'sumber rejeki', 'sumber', 'event organizer pekalongan', 'eo pekalongan', 'software event organizer', 'sistem registrasi event', 'aplikasi QR check-in', 'undangan digital RSVP', 'sistem tiket event', 'e-sertifikat otomatis', 'buku tamu digital', 'lucky draw digital'],
   h1: 'Solusi Teknologi Event: Registrasi, QR Check-in, Tiket, RSVP & E-Sertifikat',
-  body: `<p>Sumber Rejeki Tech membantu event organizer, wedding organizer, perusahaan, dan institusi mengelola acara dengan lebih rapi: dari pendaftaran peserta sampai laporan akhir.</p>`,
-  jsonLd: [buildOrganizationJsonLd(SITE_URL, { email: EMAIL }), buildWebSiteJsonLd(SITE_URL)],
+  body: `<p>Sumber Rejeki Tech membantu event organizer, wedding organizer, perusahaan, dan institusi mengelola acara dengan lebih rapi: dari pendaftaran peserta sampai laporan akhir.</p><h2>Teknologi Event untuk EO &amp; Wedding Organizer di Pekalongan</h2><p>Kami melayani event organizer (EO) Pekalongan, wedding organizer, sekolah, kampus, dan perusahaan di Pekalongan, Jawa Tengah, serta seluruh Indonesia, dengan sistem registrasi, QR check-in, tiket, undangan digital, dan e-sertifikat. Temukan kami di Instagram, TikTok, dan Threads: @sumberrejekitech.</p>`,
+  jsonLd: [buildOrganizationJsonLd(SITE_URL, { email: EMAIL, phone: PHONE }), buildWebSiteJsonLd(SITE_URL)],
 };
 
 const pages = [
   HOME,
   {
     path: '/products',
-    title: 'Katalog Produk: 24 Sistem untuk Event Organizer | Sumber Rejeki Tech',
-    desc: 'Katalog 24 sistem teknologi event: registrasi, QR check-in, tiket, e-badge, undangan RSVP, buku tamu digital, lucky draw, e-sertifikat, dashboard, dan analitik.',
+    title: 'Katalog Produk: 13 Software untuk Event Organizer | Sumber Rejeki Tech',
+    desc: 'Katalog 13 software event dalam 4 kategori: registrasi & QR check-in, buku tamu digital, e-certificate, undangan RSVP, event game, photobooth, ticketing, anggaran, vendor, dan inventaris.',
     h1: 'Katalog Produk Sumber Rejeki Tech',
     body: '',
-    jsonLd: [buildBreadcrumbJsonLd(SITE_URL, [['Beranda', '/'], ['Produk', '/products']])],
+    jsonLd: [
+      buildBreadcrumbJsonLd(SITE_URL, [['Beranda', '/'], ['Produk', '/products']]),
+      buildItemListJsonLd(SITE_URL, productsData.map((p) => [p.title.id, `/products/${p.slug}`])),
+    ],
   },
   {
     path: '/solutions',
     title: 'Solusi Event: Registrasi, Experience, Operasional & Laporan | Sumber Rejeki Tech',
-    desc: 'Empat kategori solusi untuk acara Anda: registrasi & kehadiran, event experience, operasional acara, serta pelaporan dan bisnis.',
+    desc: 'Empat kategori solusi untuk acara Anda: Event Operation, Event Engagement, Event Creative & Entertainment, dan Event Business Management.',
     h1: 'Solusi Sumber Rejeki Tech',
     body: '',
     jsonLd: [buildBreadcrumbJsonLd(SITE_URL, [['Beranda', '/'], ['Solusi', '/solutions']])],
@@ -77,9 +81,19 @@ const pages = [
       keywords: seo.keywords,
       h1: seo.title,
       body:
-        `<p>${esc(seo.intro)}</p>` +
-        `<h2>Fitur utama</h2><ul>${p.features.id.map((f) => `<li>${esc(f)}</li>`).join('')}</ul>` +
-        `<h2>Cocok untuk</h2><p>${esc(p.useCases.id)}</p>` +
+        `<p>${esc(p.desc.id)}</p><p><strong>Status:</strong> ${esc(STATUS_LABEL_ID[p.status] || STATUS_LABEL_ID.InDevelopment)}</p>` +
+        `<h2>Tentang ${esc(p.title.id)}</h2><p>${esc(seo.intro)}</p>` +
+        `<h2>Tujuan dan manfaat</h2><ul>${p.benefits.map((b) => `<li>${esc(b)}</li>`).join('')}</ul>` +
+        `<h2>Target pengguna</h2><ul>${p.targets.map((u) => `<li>${esc(u)}</li>`).join('')}</ul>` +
+        (p.modules
+          ? `<h2>Lima modul permainan</h2>` +
+            p.modules.map((m) => `<h3>${esc(m.title)}</h3><ul>${m.features.map((f) => `<li>${esc(f)}</li>`).join('')}</ul>`).join('') +
+            `<h3>Fitur umum</h3><ul>${p.commonFeatures.map((f) => `<li>${esc(f)}</li>`).join('')}</ul>`
+          : `<h2>Fitur lengkap</h2><ul>${p.features.map((f) => { const x = parseFeature(f); return `<li><strong>${esc(x.name)}</strong>${x.desc ? ` — ${esc(x.desc)}` : ''}</li>`; }).join('')}</ul>`) +
+        `<h2>Cara kerja sistem</h2><ol>${p.howItWorks.map((s) => `<li>${esc(s)}</li>`).join('')}</ol>` +
+        `<h2>Kebutuhan perangkat</h2><p>${esc(p.devices)}</p>` +
+        `<h2>Kebutuhan koneksi internet</h2><p>${esc(p.internet)}</p>` +
+        `<h2>Keamanan dan penyimpanan data</h2><p>${esc(p.security)}</p>` +
         `<h2>Pertanyaan yang sering diajukan</h2>` +
         seo.faq.map(([q, a]) => `<h3>${esc(q)}</h3><p>${esc(a)}</p>`).join(''),
       jsonLd: buildProductJsonLd(p, seo, SITE_URL),
