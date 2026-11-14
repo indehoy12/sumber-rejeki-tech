@@ -14,6 +14,27 @@ const Check = () => (
 
 const H2 = ({ children }) => <h2 className="text-xl font-semibold text-brand-navy mt-10 mb-4">{children}</h2>;
 
+// Tombol demo: link aktif bila product.demoUrl valid (https), selain itu tombol non-aktif "sedang dalam pengerjaan".
+const DemoButton = ({ url, label, pendingLabel }) => {
+  const valid = typeof url === 'string' && /^https:\/\//i.test(url.trim());
+  return valid ? (
+    <a
+      href={url.trim()}
+      target="_blank" rel="noopener noreferrer"
+      className="block w-full text-center px-6 py-3 bg-brand-navy text-white font-semibold rounded-md hover:bg-brand-navy_light transition-colors"
+    >
+      {label} <span aria-hidden="true">↗</span>
+    </a>
+  ) : (
+    <button
+      type="button" disabled aria-disabled="true"
+      className="block w-full text-center px-6 py-3 bg-white text-brand-muted font-medium rounded-md border border-dashed border-brand-border cursor-not-allowed"
+    >
+      {pendingLabel}
+    </button>
+  );
+};
+
 const WaButton = ({ href, children }) => (
   <a
     href={href}
@@ -78,6 +99,13 @@ const ProductDetail = () => {
 
             <H2>{sec.about} {title}</H2>
             <p className="text-brand-muted leading-relaxed">{seo.intro}</p>
+
+            {product.problem && (
+              <>
+                <H2>{sec.problem}</H2>
+                <p className="text-brand-muted leading-relaxed">{product.problem}</p>
+              </>
+            )}
 
             <H2>{sec.benefits}</H2>
             <ul className="space-y-3">
@@ -149,8 +177,32 @@ const ProductDetail = () => {
             <H2>{sec.security}</H2>
             <p className="text-brand-muted leading-relaxed">{product.security}</p>
 
+            <H2>{sec.estimate}</H2>
+            {product.estimate ? (
+              <p className="text-brand-navy font-semibold">
+                {sec.estimate}: {sec.estimateValue.replace('{min}', product.estimate.min).replace('{max}', product.estimate.max)}
+              </p>
+            ) : (
+              <p className="text-brand-muted">{sec.estimateTbd}</p>
+            )}
+            <p className="text-sm text-brand-muted mt-2">{sec.estimateNote}</p>
+
+            <H2>{sec.deployment}</H2>
+            <p className="text-brand-muted leading-relaxed">{sec.deploymentText}</p>
+
             <H2>{sec.screenshots}</H2>
-            <p className="text-sm text-brand-muted">{sec.noScreenshots}</p>
+            {product.screenshots && product.screenshots.length > 0 ? (
+              <div className="grid sm:grid-cols-2 gap-4">
+                {product.screenshots.map((img) => (
+                  <figure key={img.src} className="rounded-lg border border-brand-border overflow-hidden bg-brand-soft">
+                    <img src={img.src} alt={img.alt} loading="lazy" className="w-full h-auto" />
+                    {img.concept && <figcaption className="text-xs text-brand-muted px-3 py-2">{sec.conceptLabel}</figcaption>}
+                  </figure>
+                ))}
+              </div>
+            ) : (
+              <p className="text-sm text-brand-muted">{sec.noScreenshots}</p>
+            )}
 
             <H2>{sec.faq}</H2>
             <div className="space-y-3">
@@ -162,7 +214,8 @@ const ProductDetail = () => {
               ))}
             </div>
 
-            <div className="mt-10">
+            <div className="mt-10 grid gap-3 sm:grid-cols-2">
+              <DemoButton url={product.demoUrl} label={t.productDetail.btnDemo} pendingLabel={t.productDetail.demoPending} />
               <WaButton href={waLink(message)}>{t.productDetail.btnWA}</WaButton>
             </div>
           </div>
@@ -173,6 +226,9 @@ const ProductDetail = () => {
               <StatusBadge status={product.status} className="!text-sm !px-3" />
             </div>
             <p className="text-sm text-brand-muted mb-6">{t.productDetail.sideDesc}</p>
+            <div className="mb-3">
+              <DemoButton url={product.demoUrl} label={t.productDetail.btnDemo} pendingLabel={t.productDetail.demoPending} />
+            </div>
             <WaButton href={waLink(message)}>{t.productDetail.btnWA}</WaButton>
             <Link to="/contact" className="block w-full text-center mt-3 px-6 py-3 border border-brand-border bg-white text-brand-navy font-medium rounded-md hover:border-brand-navy transition-colors">
               {t.productDetail.btnContact}

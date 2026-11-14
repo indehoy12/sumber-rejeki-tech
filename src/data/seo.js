@@ -5,7 +5,8 @@ import { productsData } from './products.js';
 
 export const STATUS_LABEL_ID = {
   InDevelopment: 'Dalam Pengembangan',
-  ComingSoon: 'Coming Soon',
+  ComingSoon: 'Segera Hadir',
+  ConsultFirst: 'Konsultasi Terlebih Dahulu',
   Available: 'Tersedia',
 };
 

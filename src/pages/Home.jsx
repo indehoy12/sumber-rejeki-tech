@@ -6,6 +6,8 @@ import HowItWorks from '../components/HowItWorks';
 import CTA from '../components/CTA';
 import Seo from '../components/Seo';
 import PopularSearches from '../components/PopularSearches';
+import ServicesSection from '../components/ServicesSection';
+import PortfolioSection from '../components/PortfolioSection';
 
 const Home = () => (
   <>
@@ -16,6 +18,8 @@ const Home = () => (
     <Products />
     <PopularSearches />
     <HowItWorks />
+    <PortfolioSection />
+    <ServicesSection />
     <CTA />
   </>
 );

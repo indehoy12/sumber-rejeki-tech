@@ -26,6 +26,20 @@ Butuh Node.js 20.19+ atau 22.12+.
 
 Catatan: variabel `VITE_` ditanam saat build. Setelah mengubah nilainya, jalankan ulang `npm run dev` (lokal) atau deploy ulang (hosting).
 
+## Mengedit konten (tanpa mengubah desain)
+
+| Yang ingin diubah | File |
+| --- | --- |
+| Status, estimasi pengerjaan, screenshot, masalah yang diselesaikan per produk | `src/data/products.js` |
+| Portofolio (foto di `public/portfolio/`) | `src/data/portfolio.js` |
+| Halaman Website Development, Custom Software, FAQ | `src/data/content.js` |
+| Teks beranda, cara kerja, solusi, privasi (ID/EN) | `src/data/translations.js` |
+| Judul/deskripsi SEO produk | `src/data/seo.js` |
+| Nomor WhatsApp, email | `.env` / Cloudflare variables |
+
+Portofolio otomatis tampil (menu, beranda, sitemap) begitu `portfolioItems` berisi minimal satu proyek.
+Analytics opsional: isi `VITE_CF_ANALYTICS_TOKEN` (Cloudflare Web Analytics) dan/atau `VITE_GA_MEASUREMENT_ID` (GA4).
+
 ## Deploy ke Cloudflare Pages
 
 1. Upload project ke GitHub (file `.env` tidak ikut, sudah di `.gitignore`).

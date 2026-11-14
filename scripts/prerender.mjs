@@ -6,8 +6,10 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { productsData, parseFeature } from '../src/data/products.js';
 import { seoBySlug, STATUS_LABEL_ID } from '../src/data/seo.js';
+import { SERVICE_PAGES, FAQ_PAGE } from '../src/data/content.js';
+import { portfolioItems } from '../src/data/portfolio.js';
 import {
-  buildOrganizationJsonLd, buildWebSiteJsonLd, buildProductJsonLd, buildBreadcrumbJsonLd, buildItemListJsonLd,
+  buildFaqJsonLd, buildOrganizationJsonLd, buildWebSiteJsonLd, buildProductJsonLd, buildBreadcrumbJsonLd, buildItemListJsonLd,
 } from '../src/data/jsonld.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -72,6 +74,32 @@ const pages = [
   },
   { path: '/privacy', title: 'Kebijakan Privasi | Sumber Rejeki Tech', desc: 'Kebijakan privasi Sumber Rejeki Tech.', h1: 'Kebijakan Privasi', body: '', jsonLd: [] },
   { path: '/terms', title: 'Syarat & Ketentuan | Sumber Rejeki Tech', desc: 'Syarat dan ketentuan penggunaan situs Sumber Rejeki Tech.', h1: 'Syarat & Ketentuan', body: '', jsonLd: [] },
+  ...Object.values(SERVICE_PAGES).map((sp) => ({
+    path: sp.path,
+    title: `${sp.seoTitle} | ${SITE_NAME}`,
+    desc: sp.seoDesc,
+    keywords: sp.keywords,
+    h1: sp.title,
+    body: `<p>${esc(sp.intro)}</p><h2>${esc(sp.listTitle)}</h2><ul>${sp.items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul><p>${esc(sp.note)}</p>`,
+    jsonLd: [buildBreadcrumbJsonLd(SITE_URL, [['Beranda', '/'], [sp.title, sp.path]])],
+  })),
+  {
+    path: FAQ_PAGE.path,
+    title: `${FAQ_PAGE.seoTitle} | ${SITE_NAME}`,
+    desc: FAQ_PAGE.seoDesc,
+    h1: FAQ_PAGE.title,
+    body: FAQ_PAGE.items.map(([q, a]) => `<h3>${esc(q)}</h3><p>${esc(a)}</p>`).join(''),
+    jsonLd: [buildBreadcrumbJsonLd(SITE_URL, [['Beranda', '/'], ['FAQ', FAQ_PAGE.path]]), buildFaqJsonLd(FAQ_PAGE.items)],
+  },
+  {
+    path: '/portfolio',
+    title: `Portofolio Proyek | ${SITE_NAME}`,
+    desc: 'Proyek pilihan yang dikerjakan Sumber Rejeki Tech di bidang event technology, sistem bisnis, website, dan software khusus.',
+    h1: 'Portofolio',
+    noindex: portfolioItems.length === 0,
+    body: portfolioItems.map((i) => `<h2>${esc(i.name)}</h2><p>${esc(i.category)}${i.internal ? ' (pengembangan internal)' : ''}. ${esc(i.desc)}</p>`).join(''),
+    jsonLd: [buildBreadcrumbJsonLd(SITE_URL, [['Beranda', '/'], ['Portofolio', '/portfolio']])],
+  },
   ...productsData.map((p) => {
     const seo = seoBySlug[p.slug];
     return {
@@ -82,6 +110,7 @@ const pages = [
       h1: seo.title,
       body:
         `<p>${esc(p.desc.id)}</p><p><strong>Status:</strong> ${esc(STATUS_LABEL_ID[p.status] || STATUS_LABEL_ID.InDevelopment)}</p>` +
+        (p.problem ? `<h2>Masalah yang diselesaikan</h2><p>${esc(p.problem)}</p>` : '') +
         `<h2>Tentang ${esc(p.title.id)}</h2><p>${esc(seo.intro)}</p>` +
         `<h2>Tujuan dan manfaat</h2><ul>${p.benefits.map((b) => `<li>${esc(b)}</li>`).join('')}</ul>` +
         `<h2>Target pengguna</h2><ul>${p.targets.map((u) => `<li>${esc(u)}</li>`).join('')}</ul>` +
@@ -90,10 +119,14 @@ const pages = [
             p.modules.map((m) => `<h3>${esc(m.title)}</h3><ul>${m.features.map((f) => `<li>${esc(f)}</li>`).join('')}</ul>`).join('') +
             `<h3>Fitur umum</h3><ul>${p.commonFeatures.map((f) => `<li>${esc(f)}</li>`).join('')}</ul>`
           : `<h2>Fitur lengkap</h2><ul>${p.features.map((f) => { const x = parseFeature(f); return `<li><strong>${esc(x.name)}</strong>${x.desc ? ` — ${esc(x.desc)}` : ''}</li>`; }).join('')}</ul>`) +
-        `<h2>Cara kerja sistem</h2><ol>${p.howItWorks.map((s) => `<li>${esc(s)}</li>`).join('')}</ol>` +
+        `<h2>Alur penggunaan</h2><ol>${p.howItWorks.map((s) => `<li>${esc(s)}</li>`).join('')}</ol>` +
         `<h2>Kebutuhan perangkat</h2><p>${esc(p.devices)}</p>` +
         `<h2>Kebutuhan koneksi internet</h2><p>${esc(p.internet)}</p>` +
         `<h2>Keamanan dan penyimpanan data</h2><p>${esc(p.security)}</p>` +
+        (p.notes ? `<p>${esc(p.notes)}</p>` : '') +
+        `<h2>Estimasi pengerjaan</h2><p>${p.estimate ? `Estimasi Pengerjaan: ${p.estimate.min}–${p.estimate.max} Hari Kerja.` : 'Estimasi disampaikan setelah konsultasi.'} Estimasi bergantung pada kebutuhan, tingkat konfigurasi, kelengkapan data, dan penyesuaian yang disepakati; estimasi final dikonfirmasi melalui penawaran.</p>` +
+        (p.demoUrl ? `<h2>Coba demo</h2><p>Demo ${esc(p.title.id)} tersedia untuk dicoba.</p>` : '') +
+        `<h2>Layanan dan deployment</h2><p>Setiap implementasi sistem dipersiapkan secara terpisah untuk masing-masing klien. Pengelolaan deployment dan hosting dapat ditangani oleh Sumber Rejeki Tech.</p>` +
         `<h2>Pertanyaan yang sering diajukan</h2>` +
         seo.faq.map(([q, a]) => `<h3>${esc(q)}</h3><p>${esc(a)}</p>`).join(''),
       jsonLd: buildProductJsonLd(p, seo, SITE_URL),
@@ -112,6 +145,7 @@ const render = (page) => {
   const head = [
     `<title>${esc(page.title)}</title>`,
     `<meta name="description" content="${esc(page.desc)}" />`,
+    page.noindex ? `<meta name="robots" content="noindex" />` : '',
     page.keywords ? `<meta name="keywords" content="${esc(page.keywords.join(', '))}" />` : '',
     `<link rel="canonical" href="${url}" />`,
     `<meta property="og:type" content="website" />`,
@@ -155,10 +189,11 @@ for (const page of pages) {
 }
 
 const today = new Date().toISOString().slice(0, 10);
-const priority = (p) => (p === '/' ? '1.0' : p.startsWith('/products/') ? '0.8' : p === '/privacy' || p === '/terms' ? '0.2' : '0.6');
+const priority = (p) => (p === '/' ? '1.0' : p === '/faq' || p === '/portfolio' || p === '/website-development' || p === '/custom-software-development' ? '0.6' : p.startsWith('/products/') ? '0.8' : p === '/privacy' || p === '/terms' ? '0.2' : '0.6');
 const sitemap =
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
   pages
+    .filter((p) => !p.noindex)
     .map((p) => `  <url><loc>${SITE_URL}${p.path === '/' ? '/' : p.path}</loc><lastmod>${today}</lastmod><priority>${priority(p.path)}</priority></url>`)
     .join('\n') +
   `\n</urlset>\n`;

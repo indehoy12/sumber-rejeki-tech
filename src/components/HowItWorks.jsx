@@ -3,7 +3,7 @@ import { useLanguage } from '../hooks/useLanguage';
 
 const HowItWorks = () => {
   const { t } = useLanguage();
-  const stepNumbers = ["01", "02", "03", "04", "05"];
+  const stepNumbers = t.howItWorks.steps.map((_, i) => String(i + 1).padStart(2, "0"));
 
   return (
     <section className="py-16 lg:py-24 bg-white">

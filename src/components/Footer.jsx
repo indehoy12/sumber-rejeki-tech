@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../hooks/useLanguage';
 import { SITE, waLink } from '../config/site';
+import { portfolioItems } from '../data/portfolio';
 import { SOCIAL_HANDLES } from '../config/social';
 import { BrandIcon, MailIcon } from './SocialIcons';
 import BrandLogo from './BrandLogo';
@@ -55,6 +56,10 @@ const Footer = () => {
               <li><Link to="/about" className={linkCls}>{t.nav.about}</Link></li>
               <li><Link to="/products" className={linkCls}>{t.nav.products}</Link></li>
               <li><Link to="/solutions" className={linkCls}>{t.nav.solutions}</Link></li>
+              <li><Link to="/website-development" className={linkCls}>{t.nav.websiteDev}</Link></li>
+              <li><Link to="/custom-software-development" className={linkCls}>{t.nav.customSoft}</Link></li>
+              {portfolioItems.length > 0 && <li><Link to="/portfolio" className={linkCls}>{t.nav.portfolio}</Link></li>}
+              <li><Link to="/faq" className={linkCls}>{t.nav.faq}</Link></li>
               <li><Link to="/contact" className={linkCls}>{t.nav.contact}</Link></li>
             </ul>
           </nav>

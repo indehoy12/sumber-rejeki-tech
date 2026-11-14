@@ -2,8 +2,24 @@
 // Sumber isi: PRD Revisi Katalog Produk. Fitur ditulis "Nama — penjelasan".
 //
 // STATUS (diatur admin website, ubah di kolom `status` masing-masing produk):
-//   'InDevelopment' = Dalam Pengembangan | 'ComingSoon' = Coming Soon | 'Available' = Tersedia
+//   'Available' = Tersedia | 'InDevelopment' = Dalam Pengembangan | 'ComingSoon' = Segera Hadir
+//   'ConsultFirst' = Konsultasi Terlebih Dahulu
 // Jangan ubah ke 'Available' sebelum produk benar-benar tersedia.
+//
+// ESTIMASI PENGERJAAN (diisi pemilik, per produk): `estimate: { min: 5, max: 10 }` (hari kerja).
+//   Selama `estimate: null`, halaman produk menampilkan "disampaikan setelah konsultasi".
+//   Nilai harus ditentukan & diverifikasi Sumber Rejeki Tech sebelum dipublikasikan.
+//
+// MASALAH YANG DISELESAIKAN: `problem: '...'` (satu kalimat) tampil di halaman produk.
+//
+// DEMO (per produk): `demoUrl: 'https://demo.contoh.com/nama-produk'` (harus diawali https://).
+//   Bila diisi -> tombol "Coba Demo" membuka link di tab baru.
+//   Bila kosong ('') -> tombol non-aktif "Demo sedang dalam pengerjaan". Tidak perlu mengubah kode lain.
+//   Pakai data demo fiktif, jangan data klien/peserta sungguhan.
+//
+// SCREENSHOT (per produk): `screenshots: [{ src: '/screenshots/nama-file.webp', alt: 'Deskripsi', concept: false }]`
+//   Taruh file di folder public/screenshots/. Set `concept: true` bila hanya ilustrasi konsep (otomatis diberi label).
+//   Gunakan data fiktif / data yang sudah diizinkan. Selama kosong, tampil teks "akan ditambahkan".
 // Detail teknis (howItWorks, devices, internet, security) bersifat umum; sesuaikan bila sudah final.
 
 export const CATEGORIES = [
@@ -13,7 +29,7 @@ export const CATEGORIES = [
   'Event Business Management',
 ];
 
-export const STATUSES = ['InDevelopment', 'ComingSoon', 'Available'];
+export const STATUSES = ['Available', 'InDevelopment', 'ComingSoon', 'ConsultFirst'];
 
 const SECURITY_DEFAULT =
   'Data acara dan peserta dikelola penyelenggara. Pengaturan akses, penyimpanan, dan backup data dijelaskan dan disepakati saat konsultasi.';
@@ -28,6 +44,10 @@ export const productsData = [
     slug: 'event-registration',
     category: 'Event Operation',
     status: 'Available',
+    demoUrl: '',
+    estimate: null,
+    screenshots: [],
+    problem: 'Pendaftaran manual dan pemeriksaan kehadiran satu per satu membuat data peserta tersebar, antrean di meja registrasi panjang, dan rekap kehadiran sulit disusun.',
     title: { id: 'Event Registration & QR Check-in System', en: 'Event Registration & QR Check-in System' },
     short: {
       id: 'Pendaftaran peserta dan check-in tiket QR Code dalam satu sistem.',
@@ -69,6 +89,10 @@ export const productsData = [
     slug: 'digital-guest-book',
     category: 'Event Operation',
     status: 'Available',
+    demoUrl: '',
+    estimate: null,
+    screenshots: [],
+    problem: 'Buku tamu kertas sulit dirapikan, data tamu sulit dicari, dan rekap kunjungan harus disalin ulang setelah acara.',
     title: { id: 'Digital Guest Book System', en: 'Digital Guest Book System' },
     short: {
       id: 'Buku tamu digital dengan formulir elektronik dan tanda tangan di layar.',
@@ -110,6 +134,10 @@ export const productsData = [
     slug: 'visitor-management',
     category: 'Event Operation',
     status: 'Available',
+    demoUrl: '',
+    estimate: null,
+    screenshots: [],
+    problem: 'Penyelenggara sulit mengetahui siapa saja yang datang, kapan mereka masuk dan pulang, serta berapa jumlah pengunjung secara terstruktur.',
     title: { id: 'Visitor Management System', en: 'Visitor Management System' },
     short: {
       id: 'Pencatatan kedatangan dan kepulangan pengunjung beserta statistiknya.',
@@ -151,6 +179,10 @@ export const productsData = [
     slug: 'event-dashboard',
     category: 'Event Operation',
     status: 'Available',
+    demoUrl: '',
+    estimate: null,
+    screenshots: [],
+    problem: 'Informasi jadwal, progres, tugas, dan ringkasan operasional dari berbagai kegiatan tersebar sehingga sulit dipantau dalam satu tempat.',
     title: { id: 'Event Management Dashboard', en: 'Event Management Dashboard' },
     short: {
       id: 'Satu dashboard untuk memantau jadwal, peserta, dan aktivitas acara.',
@@ -194,6 +226,10 @@ export const productsData = [
     slug: 'crew-management',
     category: 'Event Operation',
     status: 'Available',
+    demoUrl: '',
+    estimate: null,
+    screenshots: [],
+    problem: 'Pembagian tugas, jadwal, dan kehadiran kru yang dikoordinasikan secara terpisah membuat progres pekerjaan sulit dipantau.',
     title: { id: 'Crew & Task Management System', en: 'Crew & Task Management System' },
     short: {
       id: 'Atur kru, pembagian tugas, jadwal, dan progres pekerjaan acara.',
@@ -237,6 +273,10 @@ export const productsData = [
     slug: 'e-certificate',
     category: 'Event Engagement',
     status: 'Available',
+    demoUrl: '',
+    estimate: null,
+    screenshots: [],
+    problem: 'Membuat dan membagikan sertifikat satu per satu untuk banyak penerima memakan waktu dan rawan kesalahan data.',
     title: { id: 'E-Certificate System', en: 'E-Certificate System' },
     short: {
       id: 'Desain, terbitkan, dan bagikan sertifikat elektronik dengan verifikasi QR.',
@@ -280,6 +320,10 @@ export const productsData = [
     slug: 'invitation-rsvp',
     category: 'Event Engagement',
     status: 'Available',
+    demoUrl: '',
+    estimate: null,
+    screenshots: [],
+    problem: 'Mengirim undangan dan mengumpulkan konfirmasi kehadiran secara manual menyulitkan penyelenggara memperkirakan jumlah tamu yang hadir.',
     title: { id: 'Invitation & RSVP System', en: 'Invitation & RSVP System' },
     short: {
       id: 'Undangan digital personal dengan konfirmasi kehadiran (RSVP) online.',
@@ -325,6 +369,10 @@ export const productsData = [
     slug: 'event-game',
     category: 'Event Creative & Entertainment',
     status: 'Available',
+    demoUrl: '',
+    estimate: null,
+    screenshots: [],
+    problem: 'Acara membutuhkan hiburan interaktif yang mudah dikendalikan, tanpa peserta harus bergabung menggunakan ponsel masing-masing.',
     title: { id: 'Event Game System', en: 'Event Game System' },
     short: {
       id: 'Lima permainan interaktif untuk layar TV atau monitor touchscreen.',
@@ -393,13 +441,18 @@ export const productsData = [
       'Skor, leaderboard, pemenang, dan riwayat permainan tersimpan untuk operator.',
     ],
     devices: 'TV atau monitor touchscreen yang disediakan penyelenggara, dengan komputer atau perangkat pemutar. Peserta tidak memerlukan HP pribadi.',
-    internet: 'Tersedia mode offline sehingga permainan tetap dapat dijalankan tanpa koneksi internet yang stabil. Koneksi internet tetap disarankan untuk persiapan konten dan sinkronisasi data.',
+    internet: 'Tersedia mode offline sehingga permainan tetap dapat dijalankan tanpa koneksi internet yang stabil. Koneksi internet tetap disarankan untuk persiapan konten dan pencadangan data.',
     security: SECURITY_DEFAULT,
+    notes: 'Dioperasikan melalui satu perangkat operator. Sinkronisasi otomatis antarperangkat tidak termasuk.',
   },
   {
     slug: 'event-photobooth',
     category: 'Event Creative & Entertainment',
     status: 'Available',
+    demoUrl: '',
+    estimate: null,
+    screenshots: [],
+    problem: 'Menyediakan pengalaman foto bertema acara biasanya membutuhkan perangkat atau aplikasi tambahan bagi pengunjung.',
     title: { id: 'Event Photobooth System', en: 'Event Photobooth System' },
     short: {
       id: 'Photobooth berbasis web: foto dari kamera HP, frame acara, unduh langsung.',
@@ -439,7 +492,7 @@ export const productsData = [
     devices: 'HP pengunjung dengan kamera dan browser. Penyelenggara mengelola acara dari HP, tablet, atau laptop.',
     internet: 'Membutuhkan HTTPS, izin kamera, dan koneksi internet untuk pengiriman serta penyimpanan foto.',
     security: SECURITY_DEFAULT,
-    notes: 'Membutuhkan HTTPS, izin kamera, dan koneksi internet untuk pengiriman serta penyimpanan foto.',
+    notes: 'Tidak termasuk penyediaan kamera DSLR, printer, booth fisik, atau operator.',
   },
 
   // ───────── D. Event Business Management ─────────
@@ -447,6 +500,10 @@ export const productsData = [
     slug: 'event-budget',
     category: 'Event Business Management',
     status: 'Available',
+    demoUrl: '',
+    estimate: null,
+    screenshots: [],
+    problem: 'Rencana dan pencatatan biaya yang tersebar membuat penggunaan anggaran sulit dikontrol dan dibandingkan dengan rencana.',
     title: { id: 'Event Budgeting System', en: 'Event Budgeting System' },
     short: {
       id: 'Susun anggaran dan catat pemasukan serta pengeluaran acara.',
@@ -489,6 +546,10 @@ export const productsData = [
     slug: 'vendor-management',
     category: 'Event Business Management',
     status: 'Available',
+    demoUrl: '',
+    estimate: null,
+    screenshots: [],
+    problem: 'Data penyedia jasa, penawaran, dan riwayat kerja sama yang tersimpan terpisah menyulitkan pencarian dan evaluasi vendor.',
     title: { id: 'Vendor Management System', en: 'Vendor Management System' },
     short: {
       id: 'Kelola data vendor, penawaran, kontrak, dan evaluasi kerja sama.',
@@ -531,6 +592,10 @@ export const productsData = [
     slug: 'equipment-inventory',
     category: 'Event Business Management',
     status: 'Available',
+    demoUrl: '',
+    estimate: null,
+    screenshots: [],
+    problem: 'Tanpa pencatatan yang rapi, ketersediaan, kondisi, dan peminjaman perlengkapan event sulit diketahui.',
     title: { id: 'Event Equipment Inventory System', en: 'Event Equipment Inventory System' },
     short: {
       id: 'Catat stok, peminjaman, pengembalian, dan perawatan peralatan event.',
@@ -574,6 +639,10 @@ export const productsData = [
     slug: 'ticketing-system',
     category: 'Event Business Management',
     status: 'Available',
+    demoUrl: '',
+    estimate: null,
+    screenshots: [],
+    problem: 'Penjualan tiket, pencatatan pembayaran, dan validasi tiket secara manual menyulitkan pemantauan transaksi dan data pemegang tiket.',
     title: { id: 'Event Ticketing & Payment System', en: 'Event Ticketing & Payment System' },
     short: {
       id: 'Jual tiket online, terima pembayaran, terbitkan e-ticket QR, dan validasi di lokasi.',
