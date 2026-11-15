@@ -14,7 +14,7 @@ const About = () => {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
           <h1 className="text-3xl md:text-4xl font-bold text-brand-navy mb-6 text-balance">{a.title}</h1>
           <div className="w-16 h-1 bg-brand-orange mx-auto mb-6" />
-          <p className="text-brand-muted leading-relaxed text-base lg:text-lg">{a.desc}</p>
+          <p className="text-brand-muted leading-relaxed text-base lg:text-lg">{a.lead}</p>
         </div>
       </section>
 

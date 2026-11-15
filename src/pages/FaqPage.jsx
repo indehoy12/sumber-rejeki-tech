@@ -2,20 +2,20 @@ import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
 import PageHeader from '../components/PageHeader';
 import { waLink } from '../config/site';
-import { FAQ_PAGE } from '../data/content';
+import { FAQ_PAGE, FAQ_PAGE_EN } from '../data/content';
 import { buildFaqJsonLd } from '../data/jsonld';
 import { useLanguage } from '../hooks/useLanguage';
 
 const FaqPage = () => {
   const { t, lang } = useLanguage();
-  const f = FAQ_PAGE;
+  // Metadata SEO (seoTitle/seoDesc) tetap dari FAQ_PAGE; hanya teks tampilan yang mengikuti bahasa.
+  const f = lang === 'en' ? { ...FAQ_PAGE, ...FAQ_PAGE_EN } : FAQ_PAGE;
 
   return (
     <div className="py-12 sm:py-16 bg-white">
       <Seo title={f.seoTitle} description={f.seoDesc} jsonLd={buildFaqJsonLd(f.items)} />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <PageHeader title={f.title} desc={f.desc} />
-        {lang !== 'id' && <p className="text-sm text-brand-muted italic mb-6 text-center">{t.productDetail.sections.idOnly}</p>}
         <div className="space-y-3">
           {f.items.map(([q, a]) => (
             <details key={q} className="group rounded-lg border border-brand-border bg-white p-4">

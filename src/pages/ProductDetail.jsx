@@ -12,6 +12,9 @@ const Check = () => (
   </svg>
 );
 
+// Produk yang lebih cocok dijelaskan sebagai operasional berkelanjutan (bukan hanya satu acara).
+const ONGOING_USE = ['equipment-inventory', 'vendor-management', 'visitor-management'];
+
 const H2 = ({ children }) => <h2 className="text-xl font-semibold text-brand-navy mt-10 mb-4">{children}</h2>;
 
 // Tombol demo: link aktif bila product.demoUrl valid (https), selain itu tombol non-aktif "sedang dalam pengerjaan".
@@ -186,6 +189,15 @@ const ProductDetail = () => {
               <p className="text-brand-muted">{sec.estimateTbd}</p>
             )}
             <p className="text-sm text-brand-muted mt-2">{sec.estimateNote}</p>
+
+            <H2>{sec.customizable}</H2>
+            <p className="text-brand-muted leading-relaxed">{sec.customizableText}</p>
+
+            <H2>{sec.flexUse}</H2>
+            <p className="text-brand-muted leading-relaxed">{ONGOING_USE.includes(product.slug) ? sec.flexUseOngoing : sec.flexUseText}</p>
+
+            <H2>{sec.howToOrder}</H2>
+            <p className="text-brand-muted leading-relaxed">{sec.howToOrderText}</p>
 
             <H2>{sec.deployment}</H2>
             <p className="text-brand-muted leading-relaxed">{sec.deploymentText}</p>

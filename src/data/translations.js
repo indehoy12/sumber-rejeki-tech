@@ -7,10 +7,10 @@ export const translations = {
     },
     nav: { home: "Home", about: "About", products: "Products", solutions: "Solutions", contact: "Contact", websiteDev: "Website Development", customSoft: "Custom Software", faq: "FAQ", catalog: "Product Catalog", flex: "Flexible Event Solutions", services: "Services", portfolio: "Portfolio", talk: "Let's Talk", menu: "Open menu", closeMenu: "Close menu", switchLang: "Switch to Indonesian", main: "Main navigation", skip: "Skip to content" },
     hero: {
-      badge: "Event technology partner",
-      title1: "Digital Technology Solutions", title2: "for Your Event and Business Needs.",
-      desc: "Sumber Rejeki Tech delivers digital technology solutions that help event organizers and businesses manage operations, participants, and digital activities more effectively.",
-      btnExplore: "Explore Our Solutions", btnDiscuss: "Consult Now",
+      badge: "Technology Solutions for Events & Businesses",
+      title1: "Custom Digital Systems", title2: "for Events & Businesses",
+      desc: "Sumber Rejeki Tech develops digital solutions for event organizers, companies, and organizations, including registration, QR check-in, ticketing, digital invitations, and operational management systems. Each solution can be tailored to your needs.",
+      btnExplore: "Explore Products", btnDiscuss: "Free Consultation",
       stats: [
         { value: "13", label: "Event systems" },
         { value: "4", label: "System categories" },
@@ -18,20 +18,20 @@ export const translations = {
       ]
     },
     intro: {
-      title: "Your Technology Partner for Every Event.",
-      desc: "Sumber Rejeki Tech provides digital solutions that help event organizers manage registration, attendance, participant activities, operations, and event reporting more structurally and professionally."
+      title: "Digital Solutions Built Around Your Needs",
+      desc: "We support event and business technology needs with practical, flexible web-based systems tailored to each client's workflow. From one-off events to ongoing operations, we help design the right solution through consultation."
     },
     solutions: {
       title: "Our Solutions", desc: "Four main system categories to support the success of your event.",
       items: [
-        { title: "Event Operation", desc: "Registration, QR check-in, guest book, visitors, dashboard, and crew management." },
-        { title: "Event Engagement", desc: "E-certificates, digital invitations, and RSVP." },
-        { title: "Event Creative & Entertainment", desc: "Interactive event games and digital photobooth." },
-        { title: "Event Business Management", desc: "Budgeting, vendors, equipment inventory, and ticketing." }
+        { title: "Event Operation", desc: "Make registration, check-in, guest and visitor records, team management, and event monitoring easier through digital systems." },
+        { title: "Event Engagement", desc: "Keep participants and guests engaged with e-certificates, digital invitations, and attendance confirmation (RSVP)." },
+        { title: "Event Creative & Entertainment", desc: "Make events more lively with interactive games and a digital photobooth." },
+        { title: "Event Business Management", desc: "Manage budgets, vendors, equipment inventory, and ticket sales in a more organized way." }
       ]
     },
     products: {
-      title: "Featured Systems", desc: "The most widely used featured systems.", viewAll: "View All 13 Products",
+      title: "Featured Systems", desc: "A selection of systems to support your event needs.", viewAll: "View All 13 Products",
       statusAvailable: "Available", statusInDevelopment: "In Development", statusComingSoon: "Coming Soon", statusConsultFirst: "Consult First", viewDetails: "View Details"
     },
     howItWorks: {
@@ -50,11 +50,11 @@ export const translations = {
     },
     cta: {
       title: "Let's Make Your Next Event Better.",
-      desc: "Contact us for a free consultation. Our team is ready to help design the right technology solution for your event.",
-      wa: "Contact via WhatsApp", email: "Send an Email"
+      desc: "Contact us for a free consultation. Our team is ready to help design the right digital system for your event and business.",
+      wa: "Contact via WhatsApp", email: "Send a Message"
     },
     footer: {
-      desc: "A digital technology solution provider focused on event organizing needs. Helping manage activities more effectively and professionally.",
+      desc: "Custom digital systems for events and businesses. Helping manage activities and operations more effectively and professionally.",
       nav: "Navigation", contact: "Contact", privacy: "Privacy Policy", terms: "Terms & Conditions", rights: "All rights reserved.",
       tagline: "Your Technology Partner.", follow: "Contact and social media"
     },
@@ -73,12 +73,12 @@ export const translations = {
     },
     productDetail: {
       home: "Home", products: "Products", features: "Key Features", useCases: "Use Cases",
-      status: "Availability Status", btnDemo: "Try Demo", demoPending: "Demo is under development", btnWA: "Consult via WhatsApp", btnContact: "Send a message",
+      status: "Availability Status", btnDemo: "Try Demo", demoPending: "Demo Not Yet Available", btnWA: "Consult About This Product", btnContact: "Send a message",
       sideDesc: "Want to know more or see how this system fits your event? Talk to our team.",
       notFound: "Product not found", back: "Back to Catalog",
       related: "Related Systems", category: "Category",
-      waMessage: "Hello Sumber Rejeki Tech, I am interested in {product}. I would like to know the features, estimated timeline, and a quotation for my event.",
-      sections: { problem: "Problem Solved", about: "About", benefits: "Purpose & Benefits", targets: "Target Users", features: "Complete Features", modules: "Five Game Modules", common: "Common Features", how: "Usage Flow", devices: "Device Requirements", internet: "Internet Requirements", security: "Security & Data Storage", faq: "Frequently Asked Questions", screenshots: "Screenshots", noScreenshots: "Application screenshots will be added once available.", conceptLabel: "Concept illustration, not the live system", estimate: "Estimated Delivery", estimateValue: "{min}–{max} Working Days", estimateTbd: "The estimate is provided after consultation.", estimateNote: "The estimate depends on requirements, configuration level, data readiness, and customizations agreed with you. It excludes delays caused by data or approvals that are not yet available, and the final estimate is confirmed in the quotation.", deployment: "Service & Deployment", deploymentText: "Each system implementation is prepared separately for each client. Deployment and hosting can be handled by Sumber Rejeki Tech so you can focus on using the system. Hosting period, cost, storage, backup policy, and support terms are agreed in the quotation.", devNotice: "This product is not yet marked Available. Features and specifications may change. Contact us for the latest information.", idOnly: "Detailed product content is currently available in Indonesian." }
+      waMessage: "Hello Sumber Rejeki Tech, I am interested in {product}. I would like to consult about the features, estimated timeline, and system requirements.",
+      sections: { problem: "Problem Solved", about: "About", benefits: "Purpose & Benefits", targets: "Target Users", features: "Complete Features", modules: "Five Game Modules", common: "Common Features", how: "Usage Flow", devices: "Device Requirements", internet: "Internet Requirements", security: "Security & Data Storage", faq: "Frequently Asked Questions", screenshots: "Screenshots", noScreenshots: "Application screenshots will be added once available.", conceptLabel: "Concept illustration, not the live system", estimate: "Estimated Delivery", estimateValue: "{min}–{max} Working Days", estimateTbd: "The estimate is provided after consultation.", estimateNote: "The estimate depends on requirements, configuration level, data readiness, and customizations agreed with you. It excludes delays caused by data or approvals that are not yet available, and the final estimate is confirmed in the quotation.", customizable: "Customizable Features", customizableText: "Features, design, and system flow can be tailored to each client's needs. The scope of work is determined through consultation.", howToOrder: "How to Order", howToOrderText: "Start with a consultation via WhatsApp or the Contact page. Our team analyzes your needs and sends a quotation, and work begins after the quotation is approved.", flexUse: "Flexible Use", flexUseText: "The system can be used for one event, several events, or ongoing needs, depending on the system's function and the usage agreement.", flexUseOngoing: "This system can support ongoing operations, not only a single event, depending on its function and the usage agreement.", deployment: "Service & Deployment", deploymentText: "Each system implementation is prepared separately for each client. Deployment and hosting can be handled by Sumber Rejeki Tech so you can focus on using the system. Hosting period, cost, storage, backup policy, and support terms are agreed in the quotation.", devNotice: "This product is not yet marked Available. Features and specifications may change. Contact us for the latest information.", idOnly: "Detailed product content is currently available in Indonesian." }
     },
     contactPage: {
       title: "Contact Us", desc: "Have a question or want to design an event? Fill out the form below, our team will contact you shortly.",
@@ -97,12 +97,13 @@ export const translations = {
     aboutPage: {
       seoTitle: "About Us",
       title: "About Sumber Rejeki Tech",
+      lead: "Sumber Rejeki Tech provides custom digital systems for events and businesses. We help Event Organizers, Wedding Organizers, companies, institutions, and organizations use technology to manage activities and operations more effectively and professionally, with features tailored to each client's needs. We are a technology provider, not an event or wedding organizer.",
       desc: "Sumber Rejeki Tech is a digital technology solution provider focused on developing systems to support event organizing needs. We help Event Organizers, Wedding Organizers, companies, institutions, and organizations utilize digital technology for more effective and professional activity management. We are a technology provider, not an event or wedding organizer.",
       whoTitle: "Who we serve",
       who: [
         { title: "Event Organizers", desc: "Seminars, conferences, exhibitions, concerts, and festivals." },
         { title: "Wedding Organizers", desc: "Digital invitations, RSVP, guest book, and seating management." },
-        { title: "Companies & Institutions", desc: "Gatherings, training, workshops, and internal events." }
+        { title: "Companies & Institutions", desc: "Gatherings, training, workshops, internal events, and operational needs such as visitors, inventory, and vendors." }
       ],
       approachTitle: "Our approach",
       approach: [
@@ -169,12 +170,12 @@ export const translations = {
       flexBtn: "Request a Quotation",
       flexWa: "Hello Sumber Rejeki Tech, I would like to consult about Flexible Event Solutions. I need several systems to support my event.",
       items: [
-        { title: "Seminar & Conference", desc: "Registration & QR Check-in, Event Dashboard, E-Certificate, Event Game." },
-        { title: "Wedding & Engagement", desc: "Invitation & RSVP, Digital Guest Book, Photobooth, Vendor Management." },
-        { title: "Exhibition & Expo", desc: "Visitor Management, Ticketing, Digital Guest Book, Event Dashboard." },
-        { title: "Corporate & Gathering", desc: "Invitation & RSVP, Event Game (Spin Wheel), Photobooth, Budgeting." },
-        { title: "Workshop & Training", desc: "Registration & QR Check-in, E-Certificate, Crew & Task Management." },
-        { title: "Concert & Festival", desc: "Ticketing & Payment, QR Check-in, Visitor Management, Equipment Inventory." }
+        { title: "Seminar & Conference", desc: "Make participant registration, check-in, and certificate distribution smoother. Supported by Registration & QR Check-in, Event Dashboard, E-Certificate, and Event Game." },
+        { title: "Wedding & Engagement", desc: "Send invitations, confirm attendance, record guests, and keep vendors organized. Supported by Invitation & RSVP, Digital Guest Book, Photobooth, and Vendor Management." },
+        { title: "Exhibition & Expo", desc: "Record visitors, manage ticket sales, and monitor the event in one place. Supported by Visitor Management, Ticketing, Digital Guest Book, and Event Dashboard." },
+        { title: "Corporate & Gathering", desc: "Invite guests, liven up the event, and keep costs under control. Supported by Invitation & RSVP, Event Game (Spin Wheel), Photobooth, and Budgeting." },
+        { title: "Workshop & Training", desc: "Handle registration, attendance, certificates, and team tasks more neatly. Supported by Registration & QR Check-in, E-Certificate, and Crew & Task Management." },
+        { title: "Concert & Festival", desc: "Sell tickets, validate entry, and track visitors and equipment. Supported by Ticketing & Payment, QR Check-in, Visitor Management, and Equipment Inventory." }
       ]
     }
   },
@@ -186,10 +187,10 @@ export const translations = {
     },
     nav: { home: "Beranda", about: "Tentang", products: "Produk", solutions: "Solusi", contact: "Kontak", websiteDev: "Website Development", customSoft: "Custom Software", faq: "FAQ", catalog: "Katalog Produk", flex: "Paket Solusi Fleksibel", services: "Layanan", portfolio: "Portofolio", talk: "Hubungi Kami", menu: "Buka menu", closeMenu: "Tutup menu", switchLang: "Ganti ke bahasa Inggris", main: "Navigasi utama", skip: "Lompat ke konten" },
     hero: {
-      badge: "Mitra teknologi acara",
-      title1: "Solusi Teknologi Digital", title2: "untuk Kebutuhan Event dan Bisnis Anda.",
-      desc: "Sumber Rejeki Tech menghadirkan berbagai solusi teknologi digital untuk membantu penyelenggara acara dan bisnis mengelola kebutuhan operasional, peserta, serta aktivitas digital secara lebih efektif.",
-      btnExplore: "Jelajahi Solusi", btnDiscuss: "Konsultasi Sekarang",
+      badge: "Solusi Teknologi untuk Event & Bisnis",
+      title1: "Jasa Pembuatan Sistem Digital", title2: "untuk Event & Bisnis",
+      desc: "Sumber Rejeki Tech membantu penyelenggara event, perusahaan, dan organisasi melalui pengembangan sistem digital seperti registrasi peserta, QR check-in, ticketing, undangan digital, hingga manajemen operasional. Setiap sistem dapat disesuaikan dengan kebutuhan Anda.",
+      btnExplore: "Jelajahi Produk", btnDiscuss: "Konsultasi Gratis",
       stats: [
         { value: "13", label: "Sistem acara" },
         { value: "4", label: "Kategori sistem" },
@@ -197,20 +198,20 @@ export const translations = {
       ]
     },
     intro: {
-      title: "Mitra Teknologi Anda untuk Setiap Acara.",
-      desc: "Sumber Rejeki Tech menyediakan solusi digital yang membantu penyelenggara acara mengelola pendaftaran, kehadiran, aktivitas peserta, operasional, dan pelaporan acara secara lebih terstruktur dan profesional."
+      title: "Solusi Digital yang Dibuat Sesuai Kebutuhan Anda",
+      desc: "Kami membantu kebutuhan teknologi event dan bisnis melalui sistem berbasis web yang praktis, fleksibel, dan disesuaikan dengan alur kerja setiap klien. Mulai dari kebutuhan acara hingga operasional berkelanjutan, kami membantu merancang solusi yang tepat melalui konsultasi."
     },
     solutions: {
       title: "Solusi Kami", desc: "Empat kategori sistem utama untuk mendukung kesuksesan acara Anda.",
       items: [
-        { title: "Event Operation", desc: "Registrasi, QR check-in, buku tamu, pengunjung, dashboard, dan manajemen kru." },
-        { title: "Event Engagement", desc: "E-sertifikat, undangan digital, dan RSVP." },
-        { title: "Event Creative & Entertainment", desc: "Game interaktif acara dan photobooth digital." },
-        { title: "Event Business Management", desc: "Anggaran, vendor, inventaris peralatan, dan ticketing." }
+        { title: "Event Operation", desc: "Permudah pendaftaran, check-in, pencatatan tamu dan pengunjung, pengelolaan tim, serta pemantauan acara melalui sistem digital." },
+        { title: "Event Engagement", desc: "Jaga keterlibatan peserta dan tamu lewat e-sertifikat, undangan digital, dan konfirmasi kehadiran (RSVP)." },
+        { title: "Event Creative & Entertainment", desc: "Buat acara lebih meriah dengan game interaktif dan photobooth digital." },
+        { title: "Event Business Management", desc: "Kelola anggaran, vendor, inventaris peralatan, dan penjualan tiket dengan lebih tertata." }
       ]
     },
     products: {
-      title: "Sistem Unggulan", desc: "Sistem unggulan yang paling banyak digunakan.", viewAll: "Lihat Semua 13 Produk",
+      title: "Sistem Unggulan", desc: "Beberapa sistem pilihan untuk kebutuhan acara Anda.", viewAll: "Lihat Semua 13 Produk",
       statusAvailable: "Tersedia", statusInDevelopment: "Dalam Pengembangan", statusComingSoon: "Segera Hadir", statusConsultFirst: "Konsultasi Terlebih Dahulu", viewDetails: "Lihat Detail"
     },
     howItWorks: {
@@ -229,11 +230,11 @@ export const translations = {
     },
     cta: {
       title: "Mari Buat Acara Anda Berikutnya Lebih Baik.",
-      desc: "Hubungi kami untuk konsultasi gratis. Tim kami siap membantu merancang solusi teknologi yang tepat untuk acara Anda.",
-      wa: "Hubungi via WhatsApp", email: "Kirim Email"
+      desc: "Hubungi kami untuk konsultasi gratis. Tim kami siap membantu merancang sistem digital yang tepat untuk acara dan bisnis Anda.",
+      wa: "Hubungi via WhatsApp", email: "Kirim Pesan"
     },
     footer: {
-      desc: "Penyedia solusi teknologi digital yang berfokus pada kebutuhan penyelenggaraan acara. Membantu pengelolaan kegiatan yang lebih efektif dan profesional.",
+      desc: "Penyedia jasa pembuatan sistem digital untuk kebutuhan event dan bisnis. Membantu pengelolaan kegiatan dan operasional yang lebih efektif dan profesional.",
       nav: "Navigasi", contact: "Kontak", privacy: "Kebijakan Privasi", terms: "Syarat & Ketentuan", rights: "Hak cipta dilindungi undang-undang.",
       tagline: "Mitra Teknologi Anda.", follow: "Kontak dan media sosial"
     },
@@ -252,12 +253,12 @@ export const translations = {
     },
     productDetail: {
       home: "Beranda", products: "Produk", features: "Fitur Utama", useCases: "Contoh Penggunaan",
-      status: "Status Ketersediaan", btnDemo: "Coba Demo", demoPending: "Demo sedang dalam pengerjaan", btnWA: "Konsultasi via WhatsApp", btnContact: "Kirim pesan",
+      status: "Status Ketersediaan", btnDemo: "Coba Demo", demoPending: "Demo Belum Tersedia", btnWA: "Konsultasikan Produk", btnContact: "Kirim pesan",
       sideDesc: "Ingin tahu lebih lanjut atau melihat kecocokan sistem ini untuk acara Anda? Bicarakan dengan tim kami.",
       notFound: "Produk tidak ditemukan", back: "Kembali ke Katalog",
       related: "Sistem Terkait", category: "Kategori",
-      waMessage: "Halo Sumber Rejeki Tech, saya tertarik dengan {product}. Saya ingin mengetahui fitur, estimasi pengerjaan, dan penawaran untuk kebutuhan event saya.",
-      sections: { problem: "Masalah yang Diselesaikan", about: "Tentang", benefits: "Tujuan & Manfaat", targets: "Target Pengguna", features: "Fitur Lengkap", modules: "Lima Modul Permainan", common: "Fitur Umum", how: "Alur Penggunaan", devices: "Kebutuhan Perangkat", internet: "Kebutuhan Koneksi Internet", security: "Keamanan & Penyimpanan Data", faq: "Pertanyaan yang Sering Diajukan", screenshots: "Screenshot Aplikasi", noScreenshots: "Screenshot aplikasi akan ditambahkan setelah tersedia.", conceptLabel: "Ilustrasi konsep, bukan tampilan sistem aktif", estimate: "Estimasi Pengerjaan", estimateValue: "{min}–{max} Hari Kerja", estimateTbd: "Estimasi disampaikan setelah konsultasi.", estimateNote: "Estimasi pengerjaan bergantung pada kebutuhan, tingkat konfigurasi, kelengkapan data, dan penyesuaian yang disepakati bersama klien. Estimasi tidak termasuk keterlambatan akibat data atau persetujuan yang belum tersedia, dan estimasi final dikonfirmasi melalui penawaran.", deployment: "Layanan & Deployment", deploymentText: "Setiap implementasi sistem dipersiapkan secara terpisah untuk masing-masing klien. Pengelolaan deployment dan hosting dapat ditangani oleh Sumber Rejeki Tech sehingga klien dapat lebih fokus menggunakan sistem. Masa layanan hosting, biaya, kapasitas penyimpanan, kebijakan backup, dan dukungan teknis disepakati dalam penawaran.", devNotice: "Produk ini belum berstatus Tersedia. Fitur dan spesifikasi dapat berubah. Hubungi kami untuk informasi terbaru.", idOnly: "" }
+      waMessage: "Halo Sumber Rejeki Tech, saya tertarik dengan {product}. Saya ingin berkonsultasi mengenai fitur, estimasi pengerjaan, dan kebutuhan sistem.",
+      sections: { problem: "Masalah yang Diselesaikan", about: "Tentang", benefits: "Tujuan & Manfaat", targets: "Target Pengguna", features: "Fitur Lengkap", modules: "Lima Modul Permainan", common: "Fitur Umum", how: "Alur Penggunaan", devices: "Kebutuhan Perangkat", internet: "Kebutuhan Koneksi Internet", security: "Keamanan & Penyimpanan Data", faq: "Pertanyaan yang Sering Diajukan", screenshots: "Screenshot Aplikasi", noScreenshots: "Screenshot aplikasi akan ditambahkan setelah tersedia.", conceptLabel: "Ilustrasi konsep, bukan tampilan sistem aktif", estimate: "Estimasi Pengerjaan", estimateValue: "{min}–{max} Hari Kerja", estimateTbd: "Estimasi disampaikan setelah konsultasi.", estimateNote: "Estimasi pengerjaan bergantung pada kebutuhan, tingkat konfigurasi, kelengkapan data, dan penyesuaian yang disepakati bersama klien. Estimasi tidak termasuk keterlambatan akibat data atau persetujuan yang belum tersedia, dan estimasi final dikonfirmasi melalui penawaran.", customizable: "Fitur Dapat Disesuaikan", customizableText: "Fitur, desain, dan alur sistem dapat disesuaikan berdasarkan kebutuhan klien. Ruang lingkup pengerjaan ditentukan melalui konsultasi.", howToOrder: "Cara Memesan", howToOrderText: "Mulai dengan konsultasi lewat WhatsApp atau halaman Kontak. Tim kami menganalisis kebutuhan Anda dan mengirim penawaran, lalu pengerjaan dimulai setelah penawaran disetujui.", flexUse: "Penggunaan Fleksibel", flexUseText: "Sistem dapat digunakan untuk satu acara, beberapa acara, atau kebutuhan berkelanjutan sesuai fungsi sistem dan kesepakatan penggunaan.", flexUseOngoing: "Sistem ini dapat digunakan untuk operasional berkelanjutan, tidak terbatas pada satu acara, sesuai fungsi sistem dan kesepakatan penggunaan.", deployment: "Layanan & Deployment", deploymentText: "Setiap implementasi sistem dipersiapkan secara terpisah untuk masing-masing klien. Pengelolaan deployment dan hosting dapat ditangani oleh Sumber Rejeki Tech sehingga klien dapat lebih fokus menggunakan sistem. Masa layanan hosting, biaya, kapasitas penyimpanan, kebijakan backup, dan dukungan teknis disepakati dalam penawaran.", devNotice: "Produk ini belum berstatus Tersedia. Fitur dan spesifikasi dapat berubah. Hubungi kami untuk informasi terbaru.", idOnly: "" }
     },
     contactPage: {
       title: "Hubungi Kami", desc: "Punya pertanyaan atau ingin merancang acara? Isi formulir di bawah ini, tim kami akan segera menghubungi Anda.",
@@ -276,12 +277,13 @@ export const translations = {
     aboutPage: {
       seoTitle: "Tentang Kami",
       title: "Tentang Sumber Rejeki Tech",
+      lead: "Sumber Rejeki Tech merupakan penyedia jasa pembuatan dan pengembangan sistem digital untuk kebutuhan event dan bisnis. Kami membantu Event Organizer, Wedding Organizer, perusahaan, institusi, dan organisasi memanfaatkan teknologi untuk pengelolaan kegiatan dan operasional yang lebih efektif dan profesional, dengan fitur yang dapat disesuaikan dengan kebutuhan masing-masing klien. Kami adalah penyedia teknologi, bukan penyelenggara acara atau wedding.",
       desc: "Sumber Rejeki Tech merupakan penyedia solusi teknologi digital yang berfokus pada pengembangan sistem untuk mendukung kebutuhan penyelenggaraan acara. Kami membantu Event Organizer, Wedding Organizer, perusahaan, institusi, dan organisasi memanfaatkan teknologi digital untuk pengelolaan kegiatan yang lebih efektif dan profesional. Kami adalah penyedia teknologi, bukan penyelenggara acara atau wedding.",
       whoTitle: "Siapa yang kami layani",
       who: [
         { title: "Event Organizer", desc: "Seminar, konferensi, pameran, konser, dan festival." },
         { title: "Wedding Organizer", desc: "Undangan digital, RSVP, buku tamu, dan pengaturan tempat duduk." },
-        { title: "Perusahaan & Institusi", desc: "Gathering, pelatihan, workshop, dan acara internal." }
+        { title: "Perusahaan & Institusi", desc: "Gathering, pelatihan, workshop, acara internal, serta kebutuhan operasional seperti pengunjung, inventaris, dan vendor." }
       ],
       approachTitle: "Pendekatan kami",
       approach: [
@@ -348,12 +350,12 @@ export const translations = {
       flexBtn: "Minta Penawaran",
       flexWa: "Halo Sumber Rejeki Tech, saya ingin berkonsultasi mengenai Flexible Event Solutions. Saya membutuhkan beberapa sistem untuk mendukung penyelenggaraan event.",
       items: [
-        { title: "Seminar & Konferensi", desc: "Registrasi & QR Check-in, Dashboard Acara, E-Sertifikat, Event Game." },
-        { title: "Wedding & Engagement", desc: "Undangan & RSVP, Buku Tamu Digital, Photobooth, Manajemen Vendor." },
-        { title: "Pameran & Expo", desc: "Visitor Management, Ticketing, Buku Tamu Digital, Dashboard Acara." },
-        { title: "Corporate & Gathering", desc: "Undangan & RSVP, Event Game (Spin Wheel), Photobooth, Anggaran." },
-        { title: "Workshop & Pelatihan", desc: "Registrasi & QR Check-in, E-Sertifikat, Manajemen Kru & Tugas." },
-        { title: "Konser & Festival", desc: "Ticketing & Payment, QR Check-in, Visitor Management, Inventaris Peralatan." }
+        { title: "Seminar & Konferensi", desc: "Permudah pendaftaran peserta, check-in, dan pembagian sertifikat. Didukung Registrasi & QR Check-in, Dashboard Acara, E-Sertifikat, dan Event Game." },
+        { title: "Wedding & Engagement", desc: "Kirim undangan, konfirmasi kehadiran, catat tamu, dan rapikan pengelolaan vendor. Didukung Undangan & RSVP, Buku Tamu Digital, Photobooth, dan Manajemen Vendor." },
+        { title: "Pameran & Expo", desc: "Catat pengunjung, kelola penjualan tiket, dan pantau acara dalam satu tempat. Didukung Visitor Management, Ticketing, Buku Tamu Digital, dan Dashboard Acara." },
+        { title: "Corporate & Gathering", desc: "Undang tamu, buat acara lebih meriah, dan jaga biaya tetap terkendali. Didukung Undangan & RSVP, Event Game (Spin Wheel), Photobooth, dan Anggaran." },
+        { title: "Workshop & Pelatihan", desc: "Rapikan pendaftaran, kehadiran, sertifikat, dan pembagian tugas tim. Didukung Registrasi & QR Check-in, E-Sertifikat, dan Manajemen Kru & Tugas." },
+        { title: "Konser & Festival", desc: "Jual tiket, validasi masuk, serta pantau pengunjung dan peralatan. Didukung Ticketing & Payment, QR Check-in, Visitor Management, dan Inventaris Peralatan." }
       ]
     }
   }
