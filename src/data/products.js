@@ -699,3 +699,9 @@ export const getHighlights = (p, n = 4) => {
   const src = p.modules ? p.modules.map((m) => m.title) : p.features.map((f) => parseFeature(f).name);
   return src.slice(0, n);
 };
+
+// Demo aktif bila demoUrl berupa https. Dipakai untuk memprioritaskan produk yang bisa dicoba.
+export const hasDemo = (p) => typeof p.demoUrl === 'string' && /^https:\/\//i.test(p.demoUrl.trim());
+
+// Urutan katalog: produk dengan demo di depan, sisanya mengikuti urutan asli.
+export const sortDemoFirst = (list) => [...list].sort((a, b) => Number(hasDemo(b)) - Number(hasDemo(a)));

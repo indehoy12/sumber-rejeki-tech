@@ -32,7 +32,7 @@ export const translations = {
     },
     products: {
       title: "Featured Systems", desc: "A selection of systems to support your event needs.", viewAll: "View All 13 Products",
-      statusAvailable: "Available", statusInDevelopment: "In Development", statusComingSoon: "Coming Soon", statusConsultFirst: "Consult First", viewDetails: "View Details"
+      statusAvailable: "Available", statusInDevelopment: "In Development", statusComingSoon: "Coming Soon", statusConsultFirst: "Consult First", viewDetails: "View Details", btnDemo: "Try Demo", demoBadge: "Demo available"
     },
     howItWorks: {
       title: "How It Works", desc: "A structured and transparent cooperation process.",
@@ -69,7 +69,7 @@ export const translations = {
       search: "Search systems...", searchLabel: "Search systems", filterLabel: "Filter by category",
       all: "All", noResult: "No products found.", resultCount: "systems shown",
       available: "Available", comingSoon: "Coming Soon", inDevelopment: "In Development", consultFirst: "Consult First",
-      btnDetail: "View Details", btnWA: "Consult via WhatsApp", highlights: "Highlights"
+      btnDetail: "View Details", btnDemo: "Try Demo", demoBadge: "Demo available", btnWA: "Consult via WhatsApp", highlights: "Highlights"
     },
     productDetail: {
       home: "Home", products: "Products", features: "Key Features", useCases: "Use Cases",
@@ -212,7 +212,7 @@ export const translations = {
     },
     products: {
       title: "Sistem Unggulan", desc: "Beberapa sistem pilihan untuk kebutuhan acara Anda.", viewAll: "Lihat Semua 13 Produk",
-      statusAvailable: "Tersedia", statusInDevelopment: "Dalam Pengembangan", statusComingSoon: "Segera Hadir", statusConsultFirst: "Konsultasi Terlebih Dahulu", viewDetails: "Lihat Detail"
+      statusAvailable: "Tersedia", statusInDevelopment: "Dalam Pengembangan", statusComingSoon: "Segera Hadir", statusConsultFirst: "Konsultasi Terlebih Dahulu", viewDetails: "Lihat Detail", btnDemo: "Coba Demo", demoBadge: "Demo tersedia"
     },
     howItWorks: {
       title: "Cara Kerja", desc: "Proses kerja sama yang terstruktur dan transparan.",
@@ -249,7 +249,7 @@ export const translations = {
       search: "Cari sistem...", searchLabel: "Cari sistem", filterLabel: "Filter berdasarkan kategori",
       all: "Semua", noResult: "Produk tidak ditemukan.", resultCount: "sistem ditampilkan",
       available: "Tersedia", comingSoon: "Segera Hadir", inDevelopment: "Dalam Pengembangan", consultFirst: "Konsultasi Terlebih Dahulu",
-      btnDetail: "Lihat Detail", btnWA: "Konsultasi WhatsApp", highlights: "Unggulan"
+      btnDetail: "Lihat Detail", btnDemo: "Coba Demo", demoBadge: "Demo tersedia", btnWA: "Konsultasi WhatsApp", highlights: "Unggulan"
     },
     productDetail: {
       home: "Beranda", products: "Produk", features: "Fitur Utama", useCases: "Contoh Penggunaan",

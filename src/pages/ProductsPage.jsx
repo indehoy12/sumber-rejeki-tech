@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
 import PageHeader from '../components/PageHeader';
 import StatusBadge from '../components/StatusBadge';
-import { productsData, CATEGORIES, getHighlights } from '../data/products';
+import { productsData, CATEGORIES, getHighlights, hasDemo, sortDemoFirst } from '../data/products';
 import { waLink } from '../config/site';
 import { useLanguage } from '../hooks/useLanguage';
 
@@ -15,7 +15,7 @@ const ProductsPage = () => {
   const [filterCategory, setFilterCategory] = useState('All');
 
   const q = searchTerm.trim().toLowerCase();
-  const filteredProducts = productsData.filter((product) => {
+  const filteredProducts = sortDemoFirst(productsData).filter((product) => {
     const matchSearch = !q || product.title[lang].toLowerCase().includes(q) || product.short[lang].toLowerCase().includes(q) || product.desc[lang].toLowerCase().includes(q);
     const matchCategory = filterCategory === 'All' || product.category === filterCategory;
     return matchSearch && matchCategory;
@@ -69,7 +69,14 @@ const ProductsPage = () => {
                 </h2>
                 <StatusBadge status={prod.status} />
               </div>
-              <p className="text-xs font-medium text-brand-orange mb-3">{t.categories[prod.category]}</p>
+              <div className="flex flex-wrap items-center gap-2 mb-3">
+                <p className="text-xs font-medium text-brand-orange">{t.categories[prod.category]}</p>
+                {hasDemo(prod) && (
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-green-700 bg-green-50 border border-green-200 rounded-full px-2 py-0.5">
+                    <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-green-500" /> {t.productsPage.demoBadge}
+                  </span>
+                )}
+              </div>
               <p className="text-sm text-brand-muted mb-4">{prod.short[lang]}</p>
               <ul className="flex flex-wrap gap-2 mb-6 flex-grow content-start" aria-label={t.productsPage.highlights}>
                 {getHighlights(prod).map((h) => (
@@ -77,6 +84,15 @@ const ProductsPage = () => {
                 ))}
               </ul>
               <div className="flex flex-wrap gap-3 items-center">
+                {hasDemo(prod) && (
+                  <a
+                    href={prod.demoUrl.trim()}
+                    target="_blank" rel="noopener noreferrer"
+                    className="text-sm font-semibold text-white bg-brand-navy rounded-md px-4 py-2 hover:bg-brand-navy_light transition-colors"
+                  >
+                    {t.productsPage.btnDemo} <span aria-hidden="true">↗</span>
+                  </a>
+                )}
                 <Link to={`/products/${prod.slug}`} className="text-sm font-medium text-brand-navy border border-brand-border rounded-md px-4 py-2 hover:border-brand-navy transition-colors">
                   {t.productsPage.btnDetail} <span aria-hidden="true">→</span>
                 </Link>

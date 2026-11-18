@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import Reveal from './Reveal';
 import Skeleton from './Skeleton';
 import { useLanguage } from '../hooks/useLanguage';
-import { productsData } from '../data/products';
+import { productsData, hasDemo, sortDemoFirst } from '../data/products';
 import StatusBadge from './StatusBadge';
 
-// Sistem unggulan: campuran dari setiap kategori
-const FEATURED = ['event-registration', 'ticketing-system', 'invitation-rsvp', 'e-certificate', 'event-game', 'event-photobooth'];
+// Sistem unggulan: semua produk yang sudah punya demo tampil lebih dulu, sisanya diisi dari daftar ini.
+const FALLBACK = ['e-certificate', 'event-game', 'event-photobooth'];
+const FEATURED_COUNT = 6;
 
 const Products = () => {
   const { t, lang } = useLanguage();
@@ -18,7 +19,9 @@ const Products = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const featuredProducts = FEATURED.map((slug) => productsData.find((p) => p.slug === slug)).filter(Boolean);
+  const demoProducts = productsData.filter(hasDemo);
+  const fillers = FALLBACK.map((slug) => productsData.find((p) => p.slug === slug)).filter((p) => p && !hasDemo(p));
+  const featuredProducts = sortDemoFirst([...demoProducts, ...fillers]).slice(0, Math.max(FEATURED_COUNT, demoProducts.length));
 
   return (
     <section id="products" className="py-16 lg:py-24 bg-brand-soft border-t border-brand-border">
@@ -53,16 +56,34 @@ const Products = () => {
             ))
           ) : featuredProducts.map((prod, idx) => (
             <Reveal key={prod.slug} delay={idx * 80} className="h-full">
-              <Link to={`/products/${prod.slug}`} className="bg-white p-6 lg:p-8 rounded-lg border border-brand-border flex flex-col h-full hover:shadow-md transition-shadow group">
+              <div className="bg-white p-6 lg:p-8 rounded-lg border border-brand-border flex flex-col h-full hover:shadow-md transition-shadow group">
                 <div className="flex justify-between items-start gap-3 mb-4">
-                  <h3 className="text-lg font-semibold text-brand-navy group-hover:text-brand-orange transition-colors">{prod.title[lang]}</h3>
+                  <h3 className="text-lg font-semibold text-brand-navy group-hover:text-brand-orange transition-colors">
+                    <Link to={`/products/${prod.slug}`}>{prod.title[lang]}</Link>
+                  </h3>
                   <StatusBadge status={prod.status} />
                 </div>
+                {hasDemo(prod) && (
+                  <p className="inline-flex items-center gap-1.5 self-start text-xs font-semibold text-green-700 bg-green-50 border border-green-200 rounded-full px-2.5 py-1 mb-3">
+                    <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-green-500" /> {t.products.demoBadge}
+                  </p>
+                )}
                 <p className="text-sm text-brand-muted leading-relaxed mb-6 flex-grow">{prod.short[lang]}</p>
-                <span className="text-sm font-medium text-brand-navy group-hover:text-brand-orange transition-colors">
-                  {t.products.viewDetails} <span aria-hidden="true">→</span>
-                </span>
-              </Link>
+                <div className="flex flex-wrap items-center gap-3">
+                  {hasDemo(prod) && (
+                    <a
+                      href={prod.demoUrl.trim()}
+                      target="_blank" rel="noopener noreferrer"
+                      className="text-sm font-semibold text-white bg-brand-navy rounded-md px-4 py-2 hover:bg-brand-navy_light transition-colors"
+                    >
+                      {t.products.btnDemo} <span aria-hidden="true">↗</span>
+                    </a>
+                  )}
+                  <Link to={`/products/${prod.slug}`} className="text-sm font-medium text-brand-navy hover:text-brand-orange transition-colors">
+                    {t.products.viewDetails} <span aria-hidden="true">→</span>
+                  </Link>
+                </div>
+              </div>
             </Reveal>
           ))}
         </div>
